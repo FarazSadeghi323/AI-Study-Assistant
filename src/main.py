@@ -1,3 +1,4 @@
+from pdf_reader import get_pdf_page_count
 def show_banner():
     print("=" * 50)
     print("        AI Study Assistant")
@@ -13,6 +14,12 @@ def show_menu():
 
 
 def main():
+    pdf_path = "data/sample.pdf"
+
+    page_count = get_pdf_page_count(pdf_path)
+
+    print(f"PDF has {page_count} pages.")
+    input("Press Enter to continue...")
     while True:
         show_banner()
         show_menu()
