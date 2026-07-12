@@ -13,3 +13,10 @@
 ## Day 3
 - Added interactive main menu
 - Learned Git workflow (status, add, commit, push)
+
+## Day 4
+- Created pdf_reader.py
+- Installed pypdf
+- Learned Python modules and imports
+- Added PDF page counter
+- Successfully read the first PDF
