@@ -1,10 +1,17 @@
-from pdf_reader import get_pdf_page_count
+# Import the function that PDF information.
+from pdf_reader import (
+    get_pdf_page_count,
+    extract_text_from_pdf,
+)
+
+#Display the project title.
 def show_banner():
     print("=" * 50)
     print("        AI Study Assistant")
     print("=" * 50)
 
 
+#Show the main menu options
 def show_menu():
     print("\nChoose an option:")
     print("1. Summarize PDF")
@@ -13,13 +20,29 @@ def show_menu():
     print("4. Exit")
 
 
+#Main function that controls the application flow.
 def main():
+    #Path to the PDF file used for testing.
     pdf_path = "data/sample.pdf"
 
+    #Get the total number of pages in the selected PDF.
     page_count = get_pdf_page_count(pdf_path)
 
+    #Display the page count to the user.
     print(f"PDF has {page_count} pages.")
+
+    # Extract all text from the PDF.
+    pdf_text = extract_text_from_pdf(pdf_path)
+
+    # Display the extracted text.
+    print("\n===== PDF Content =====\n")
+    
+    # Display the first 1000 characters of the extracted text.
+    print(pdf_text[:1000])
+
     input("Press Enter to continue...")
+
+    #Keep the application runing until the user exits.
     while True:
         show_banner()
         show_menu()

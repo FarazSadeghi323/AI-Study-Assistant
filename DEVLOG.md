@@ -20,3 +20,8 @@
 - Learned Python modules and imports
 - Added PDF page counter
 - Successfully read the first PDF
+
+## Notes
+- Tested pypdf with a real PDF.
+- Found compatibility issues with the sample file.
+- Decided to migrate to PyMuPDF for better PDF support.
