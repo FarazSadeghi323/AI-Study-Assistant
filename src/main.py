@@ -22,9 +22,15 @@ def show_menu():
 
 #Main function that controls the application flow.
 def main():
-    #Path to the PDF file used for testing.
-    pdf_path = "data/sample.pdf"
+    # Ask the user to enter the PDF file path.
+    pdf_path = input("Enter the PDF path: ").strip()
 
+    import fitz
+
+    document = fitz.open(pdf_path)
+
+    print(document)
+    print(document.page_count)
     #Get the total number of pages in the selected PDF.
     page_count = get_pdf_page_count(pdf_path)
 
