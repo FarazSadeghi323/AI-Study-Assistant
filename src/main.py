@@ -1,17 +1,18 @@
-# Import the function that PDF information.
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
+
 from pdf_reader import (
     get_pdf_page_count,
     extract_text_from_pdf,
 )
 
-#Display the project title.
+
 def show_banner():
     print("=" * 50)
     print("        AI Study Assistant")
     print("=" * 50)
 
 
-#Show the main menu options
 def show_menu():
     print("\nChoose an option:")
     print("1. Summarize PDF")
@@ -20,56 +21,86 @@ def show_menu():
     print("4. Exit")
 
 
-#Main function that controls the application flow.
+def select_pdf():
+
+    root = Tk()
+    root.withdraw()
+
+    pdf_path = askopenfilename(
+        title="Select a PDF file",
+        filetypes=[("PDF Files", "*.pdf")]
+    )
+
+    root.destroy()
+
+    return pdf_path
+
+
+def summarize_pdf():
+
+    pdf_path = select_pdf()
+
+    if not pdf_path:
+        print("\nNo file selected.\n")
+        return
+
+    try:
+        print(f"\nSelected file: {pdf_path}")
+
+        import fitz
+        doc = fitz.open(pdf_path)
+        print(f"Direct page count: {doc.page_count}")
+        page_count = get_pdf_page_count(pdf_path)
+
+        pdf_text = extract_text_from_pdf(pdf_path)
+
+        print(f"\nPDF has {page_count} pages.\n")
+
+        print("=" * 50)
+        print("PDF Preview")
+        print("=" * 50)
+
+        print(pdf_text[:1000])
+
+    except Exception as error:
+
+        print("\n===================================")
+        print("Failed to read PDF.")
+        print(error)
+        print("===================================\n")
+
+
 def main():
-    # Ask the user to enter the PDF file path.
-    pdf_path = input("Enter the PDF path: ").strip()
 
-    import fitz
-
-    document = fitz.open(pdf_path)
-
-    print(document)
-    print(document.page_count)
-    #Get the total number of pages in the selected PDF.
-    page_count = get_pdf_page_count(pdf_path)
-
-    #Display the page count to the user.
-    print(f"PDF has {page_count} pages.")
-
-    # Extract all text from the PDF.
-    pdf_text = extract_text_from_pdf(pdf_path)
-
-    # Display the extracted text.
-    print("\n===== PDF Content =====\n")
-    
-    # Display the first 1000 characters of the extracted text.
-    print(pdf_text[:1000])
-
-    input("Press Enter to continue...")
-
-    #Keep the application runing until the user exits.
     while True:
+
         show_banner()
+
         show_menu()
 
-        choice = input("\nEnter your choice: ")
+        choice = input("\nEnter your choice: ").strip()
 
         if choice == "1":
-            print("\n📄 Summarize PDF feature (Coming Soon)\n")
+
+            summarize_pdf()
 
         elif choice == "2":
+
             print("\n📝 Quiz Generator (Coming Soon)\n")
 
         elif choice == "3":
+
             print("\n🤖 Chat with Notes (Coming Soon)\n")
 
         elif choice == "4":
+
             print("\nGoodbye Faraz! 👋")
+
             break
 
         else:
-            print("\n❌ Invalid choice!\n")
+
+            print("\nInvalid choice.\n")
 
         input("Press Enter to continue...")
         print()
