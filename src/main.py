@@ -1,10 +1,10 @@
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 
-from pdf_reader import (
-    get_pdf_page_count,
-    extract_text_from_pdf,
-)
+from pdf_reader import extract_text_from_pdf
+from pdf_info import get_pdf_information
+from text_processor import split_text
+from ai.summarizer import summarize_text
 
 
 def show_banner():
@@ -22,12 +22,13 @@ def show_menu():
 
 
 def select_pdf():
+    """Open a file picker and return the selected PDF path."""
 
     root = Tk()
     root.withdraw()
 
     pdf_path = askopenfilename(
-        title="Select a PDF file",
+        title="Select a PDF File",
         filetypes=[("PDF Files", "*.pdf")]
     )
 
@@ -37,6 +38,7 @@ def select_pdf():
 
 
 def summarize_pdf():
+    """Read a PDF and generate an AI summary."""
 
     pdf_path = select_pdf()
 
@@ -45,29 +47,47 @@ def summarize_pdf():
         return
 
     try:
-        print(f"\nSelected file: {pdf_path}")
+        # Read PDF information
+        info = get_pdf_information(pdf_path)
 
-        import fitz
-        doc = fitz.open(pdf_path)
-        print(f"Direct page count: {doc.page_count}")
-        page_count = get_pdf_page_count(pdf_path)
-
+        # Extract text
         pdf_text = extract_text_from_pdf(pdf_path)
 
-        print(f"\nPDF has {page_count} pages.\n")
+        # Split into chunks
+        chunks = split_text(pdf_text)
 
-        print("=" * 50)
-        print("PDF Preview")
+        if not chunks:
+            print("\nNo readable text found in this PDF.\n")
+            return
+
+        # Summarize the first chunk
+        first_chunk = chunks[0]
+        summary = summarize_text(first_chunk)
+
+        # Display PDF information
+        print("\n" + "=" * 50)
+        print("PDF Information")
         print("=" * 50)
 
-        print(pdf_text[:1000])
+        print(f"📄 File Name : {info['file_name']}")
+        print(f"📑 Pages     : {info['page_count']}")
+        print(f"✍ Author     : {info['author']}")
+        print(f"📝 Title      : {info['title']}")
+        print(f"💾 Size       : {info['file_size']} MB")
+        print(f"🧩 Text Chunks: {len(chunks)}")
+
+        # Display AI summary
+        print("\n" + "=" * 50)
+        print("AI Summary")
+        print("=" * 50)
+
+        print(summary)
 
     except Exception as error:
-
-        print("\n===================================")
-        print("Failed to read PDF.")
+        print("\n" + "=" * 50)
+        print("Failed to process PDF.")
         print(error)
-        print("===================================\n")
+        print("=" * 50)
 
 
 def main():
@@ -75,7 +95,6 @@ def main():
     while True:
 
         show_banner()
-
         show_menu()
 
         choice = input("\nEnter your choice: ").strip()
@@ -95,12 +114,11 @@ def main():
         elif choice == "4":
 
             print("\nGoodbye Faraz! 👋")
-
             break
 
         else:
 
-            print("\nInvalid choice.\n")
+            print("\n❌ Invalid choice.\n")
 
         input("Press Enter to continue...")
         print()

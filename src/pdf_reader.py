@@ -1,49 +1,40 @@
-# Import the PyMuPDF library.
+"""
+PDF reading utilities for AI Study Assistant.
+"""
+
 import fitz
 
 
-# Return the total number of pages in a PDF file.
-def get_pdf_page_count(pdf_path):
+def get_pdf_page_count(pdf_path: str) -> int:
     """
     Return the total number of pages in a PDF file.
 
     Args:
-        pdf_path (str): Path to the PDF file.
+        pdf_path: Path to the PDF file.
 
     Returns:
-        int: Total number of pages.
+        Total number of pages.
     """
 
-    # Open the PDF file.
-    document = fitz.open(pdf_path)
-
-    # Return the total number of pages.
-    return document.page_count
+    with fitz.open(pdf_path) as document:
+        return document.page_count
 
 
-# Extract all text from a PDF file.
-def extract_text_from_pdf(pdf_path):
+def extract_text_from_pdf(pdf_path: str) -> str:
     """
     Extract all text from a PDF file.
 
     Args:
-        pdf_path (str): Path to the PDF file.
+        pdf_path: Path to the PDF file.
 
     Returns:
-        str: All extracted text from the PDF.
+        All extracted text from the PDF.
     """
 
-    # Open the PDF file.
-    document = fitz.open(pdf_path)
+    with fitz.open(pdf_path) as document:
+        text = ""
 
-    # Store all extracted text.
-    text = ""
+        for page in document:
+            text += page.get_text()
 
-    # Read every page in the PDF.
-    for page in document:
-
-        # Append the current page text.
-        text += page.get_text()
-
-    # Return the complete extracted text.
     return text
