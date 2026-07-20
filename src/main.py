@@ -4,7 +4,13 @@ from tkinter.filedialog import askopenfilename
 from pdf_reader import extract_text_from_pdf
 from pdf_info import get_pdf_information
 from text_processor import split_text
-from ai.summarizer import summarize_text
+
+from ai.summarizer import (
+    summarize_chunks,
+    summarize_document,
+)
+
+from ai.quiz_generator import generate_quiz
 
 
 def show_banner():
@@ -22,7 +28,9 @@ def show_menu():
 
 
 def select_pdf():
-    """Open a file picker and return the selected PDF path."""
+    """
+    Open a file picker and return the selected PDF path.
+    """
 
     root = Tk()
     root.withdraw()
@@ -38,7 +46,9 @@ def select_pdf():
 
 
 def summarize_pdf():
-    """Read a PDF and generate an AI summary."""
+    """
+    Read a PDF and generate AI summaries.
+    """
 
     pdf_path = select_pdf()
 
@@ -47,24 +57,21 @@ def summarize_pdf():
         return
 
     try:
-        # Read PDF information
+
         info = get_pdf_information(pdf_path)
 
-        # Extract text
         pdf_text = extract_text_from_pdf(pdf_path)
 
-        # Split into chunks
         chunks = split_text(pdf_text)
 
         if not chunks:
-            print("\nNo readable text found in this PDF.\n")
+            print("\nNo readable text found.\n")
             return
 
-        # Summarize the first chunk
-        first_chunk = chunks[0]
-        summary = summarize_text(first_chunk)
+        summaries = summarize_chunks(chunks)
 
-        # Display PDF information
+        final_summary = summarize_document(summaries)
+
         print("\n" + "=" * 50)
         print("PDF Information")
         print("=" * 50)
@@ -76,16 +83,77 @@ def summarize_pdf():
         print(f"💾 Size       : {info['file_size']} MB")
         print(f"🧩 Text Chunks: {len(chunks)}")
 
-        # Display AI summary
         print("\n" + "=" * 50)
-        print("AI Summary")
+        print("PDF Preview")
         print("=" * 50)
 
-        print(summary)
+        print(chunks[0])
+
+        print("\n" + "=" * 50)
+        print("AI Summaries")
+        print("=" * 50)
+
+        for index, summary in enumerate(summaries, start=1):
+
+            print(f"\n----- Summary {index} -----\n")
+
+            print(summary)
+
+        print("\n" + "=" * 50)
+        print("FINAL SUMMARY")
+        print("=" * 50)
+
+        print(final_summary)
 
     except Exception as error:
+
         print("\n" + "=" * 50)
         print("Failed to process PDF.")
+        print(error)
+        print("=" * 50)
+
+
+def quiz_pdf():
+    """
+    Generate a quiz from the final AI summary.
+    """
+
+    pdf_path = select_pdf()
+
+    if not pdf_path:
+        print("\nNo file selected.\n")
+        return
+
+    try:
+
+        pdf_text = extract_text_from_pdf(pdf_path)
+
+        chunks = split_text(pdf_text)
+
+        if not chunks:
+            print("\nNo readable text found.\n")
+            return
+
+        print("\nGenerating summaries...\n")
+
+        summaries = summarize_chunks(chunks)
+
+        final_summary = summarize_document(summaries)
+
+        print("\nGenerating quiz...\n")
+
+        quiz = generate_quiz(final_summary)
+
+        print("\n" + "=" * 50)
+        print("QUIZ")
+        print("=" * 50)
+
+        print(quiz)
+
+    except Exception as error:
+
+        print("\n" + "=" * 50)
+        print("Failed to generate quiz.")
         print(error)
         print("=" * 50)
 
@@ -95,6 +163,7 @@ def main():
     while True:
 
         show_banner()
+
         show_menu()
 
         choice = input("\nEnter your choice: ").strip()
@@ -105,7 +174,7 @@ def main():
 
         elif choice == "2":
 
-            print("\n📝 Quiz Generator (Coming Soon)\n")
+            quiz_pdf()
 
         elif choice == "3":
 
@@ -114,13 +183,14 @@ def main():
         elif choice == "4":
 
             print("\nGoodbye Faraz! 👋")
+
             break
 
         else:
 
             print("\n❌ Invalid choice.\n")
 
-        input("Press Enter to continue...")
+        input("\nPress Enter to continue...")
         print()
 
 
