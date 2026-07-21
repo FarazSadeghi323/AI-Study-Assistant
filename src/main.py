@@ -11,6 +11,7 @@ from ai.summarizer import (
 )
 
 from ai.quiz_generator import generate_quiz
+from ai.flashcard_generator import generate_flashcards
 
 
 def show_banner():
@@ -23,8 +24,9 @@ def show_menu():
     print("\nChoose an option:")
     print("1. Summarize PDF")
     print("2. Generate Quiz")
-    print("3. Chat with Notes")
-    print("4. Exit")
+    print("3. Generate Flashcards")
+    print("4. Chat with Notes")
+    print("5. Exit")
 
 
 def select_pdf():
@@ -94,9 +96,7 @@ def summarize_pdf():
         print("=" * 50)
 
         for index, summary in enumerate(summaries, start=1):
-
             print(f"\n----- Summary {index} -----\n")
-
             print(summary)
 
         print("\n" + "=" * 50)
@@ -158,6 +158,51 @@ def quiz_pdf():
         print("=" * 50)
 
 
+def flashcards_pdf():
+    """
+    Generate AI flashcards from a PDF.
+    """
+
+    pdf_path = select_pdf()
+
+    if not pdf_path:
+        print("\nNo file selected.\n")
+        return
+
+    try:
+
+        pdf_text = extract_text_from_pdf(pdf_path)
+
+        chunks = split_text(pdf_text)
+
+        if not chunks:
+            print("\nNo readable text found.\n")
+            return
+
+        print("\nGenerating summaries...\n")
+
+        summaries = summarize_chunks(chunks)
+
+        final_summary = summarize_document(summaries)
+
+        print("\nGenerating flashcards...\n")
+
+        flashcards = generate_flashcards(final_summary)
+
+        print("\n" + "=" * 50)
+        print("FLASHCARDS")
+        print("=" * 50)
+
+        print(flashcards)
+
+    except Exception as error:
+
+        print("\n" + "=" * 50)
+        print("Failed to generate flashcards.")
+        print(error)
+        print("=" * 50)
+
+
 def main():
 
     while True:
@@ -178,12 +223,15 @@ def main():
 
         elif choice == "3":
 
-            print("\n🤖 Chat with Notes (Coming Soon)\n")
+            flashcards_pdf()
 
         elif choice == "4":
 
-            print("\nGoodbye Faraz! 👋")
+            print("\n🤖 Chat with Notes (Coming Soon)\n")
 
+        elif choice == "5":
+
+            print("\nGoodbye Faraz! 👋")
             break
 
         else:

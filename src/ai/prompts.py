@@ -56,3 +56,29 @@ Text:
 
 {text}
 """
+
+
+def flashcard_prompt(text):
+    return f"""
+You are an expert study assistant.
+
+Create study flashcards from the following text.
+
+Rules:
+- Generate exactly 10 flashcards.
+- Use this format only:
+
+Q: ...
+A: ...
+
+- Keep answers short.
+- Do not explain.
+- Do not write introductions.
+- Do not write conclusions.
+- Do not ask follow-up questions.
+- Output only the flashcards.
+
+Text:
+
+{text}
+"""

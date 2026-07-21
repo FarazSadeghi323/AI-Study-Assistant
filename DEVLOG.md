@@ -205,3 +205,18 @@
 - Separating features into dedicated modules improves readability and maintainability.
 - A well-designed AI pipeline can support multiple learning tools with minimal code duplication.
 - Building software incrementally leads to a cleaner and more scalable architecture.
+
+## Day 14
+
+### Features
+- Added AI-powered Flashcard Generator.
+- Created a reusable flashcard generation module.
+- Integrated flashcard generation into the main application.
+- Improved the application menu by adding a dedicated Flashcards option.
+- Successfully generated study flashcards from AI-generated document summaries.
+
+### What I Learned
+- Flashcards are an effective way to reinforce learning from long documents.
+- Reusing AI-generated summaries improves efficiency and reduces repeated processing.
+- Modular design makes adding new AI features much easier.
+- Prompt engineering has a significant impact on the quality and format of AI-generated flashcards.
