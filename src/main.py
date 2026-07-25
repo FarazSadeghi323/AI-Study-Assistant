@@ -1,14 +1,8 @@
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 
-from pdf_reader import extract_text_from_pdf
 from pdf_info import get_pdf_information
-from text_processor import split_text
-
-from ai.summarizer import (
-    summarize_chunks,
-    summarize_document,
-)
+from pdf_processor import process_pdf
 
 from ai.quiz_generator import generate_quiz
 from ai.flashcard_generator import generate_flashcards
@@ -62,17 +56,11 @@ def summarize_pdf():
 
         info = get_pdf_information(pdf_path)
 
-        pdf_text = extract_text_from_pdf(pdf_path)
+        data = process_pdf(pdf_path)
 
-        chunks = split_text(pdf_text)
-
-        if not chunks:
-            print("\nNo readable text found.\n")
-            return
-
-        summaries = summarize_chunks(chunks)
-
-        final_summary = summarize_document(summaries)
+        chunks = data["chunks"]
+        summaries = data["summaries"]
+        final_summary = data["final_summary"]
 
         print("\n" + "=" * 50)
         print("PDF Information")
@@ -126,19 +114,11 @@ def quiz_pdf():
 
     try:
 
-        pdf_text = extract_text_from_pdf(pdf_path)
+        print("\nProcessing PDF...\n")
 
-        chunks = split_text(pdf_text)
+        data = process_pdf(pdf_path)
 
-        if not chunks:
-            print("\nNo readable text found.\n")
-            return
-
-        print("\nGenerating summaries...\n")
-
-        summaries = summarize_chunks(chunks)
-
-        final_summary = summarize_document(summaries)
+        final_summary = data["final_summary"]
 
         print("\nGenerating quiz...\n")
 
@@ -171,19 +151,11 @@ def flashcards_pdf():
 
     try:
 
-        pdf_text = extract_text_from_pdf(pdf_path)
+        print("\nProcessing PDF...\n")
 
-        chunks = split_text(pdf_text)
+        data = process_pdf(pdf_path)
 
-        if not chunks:
-            print("\nNo readable text found.\n")
-            return
-
-        print("\nGenerating summaries...\n")
-
-        summaries = summarize_chunks(chunks)
-
-        final_summary = summarize_document(summaries)
+        final_summary = data["final_summary"]
 
         print("\nGenerating flashcards...\n")
 

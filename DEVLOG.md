@@ -220,3 +220,19 @@
 - Reusing AI-generated summaries improves efficiency and reduces repeated processing.
 - Modular design makes adding new AI features much easier.
 - Prompt engineering has a significant impact on the quality and format of AI-generated flashcards.
+
+## Day 15
+
+### Features
+- Refactored the PDF processing workflow.
+- Created a centralized `process_pdf()` function.
+- Removed duplicated code from Summary, Quiz, and Flashcards features.
+- Improved project architecture using Separation of Concerns.
+- Simplified the main application logic.
+
+### What I Learned
+- Refactoring improves code quality without changing functionality.
+- Avoiding duplicated code makes applications easier to maintain.
+- Centralizing common logic reduces bugs and future development time.
+- Clean architecture is essential for scalable software projects.
+
