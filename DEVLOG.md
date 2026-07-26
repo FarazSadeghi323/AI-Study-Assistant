@@ -236,3 +236,20 @@
 - Centralizing common logic reduces bugs and future development time.
 - Clean architecture is essential for scalable software projects.
 
+## Day 16
+
+### Features
+- Added Chat with Notes feature.
+- Created a reusable AI chat module.
+- Enabled users to ask questions about uploaded PDF documents.
+- Implemented an interactive chat loop with exit support.
+- Integrated Chat with Notes into the main application menu.
+- Reused the centralized PDF processing pipeline.
+- Improved application architecture by separating chat logic from the UI.
+
+### What I Learned
+- How to build an interactive AI conversation loop.
+- Why separating business logic from the user interface improves maintainability.
+- The importance of reusable modules in larger Python projects.
+- How AI assistants can answer questions based on processed document summaries.
+

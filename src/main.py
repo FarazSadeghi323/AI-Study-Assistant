@@ -6,6 +6,7 @@ from pdf_processor import process_pdf
 
 from ai.quiz_generator import generate_quiz
 from ai.flashcard_generator import generate_flashcards
+from ai.chat import chat_with_notes
 
 
 def show_banner():
@@ -199,7 +200,7 @@ def main():
 
         elif choice == "4":
 
-            print("\n🤖 Chat with Notes (Coming Soon)\n")
+            chat_pdf()
 
         elif choice == "5":
 
@@ -212,6 +213,50 @@ def main():
 
         input("\nPress Enter to continue...")
         print()
+
+
+def chat_pdf():
+    """
+    Chat with a PDF using its AI-generated summary.
+    """
+
+    pdf_path = select_pdf()
+
+    if not pdf_path:
+        print("\nNo file selected.\n")
+        return
+
+    try:
+
+        print("\nProcessing PDF...\n")
+
+        data = process_pdf(pdf_path)
+
+        final_summary = data["final_summary"]
+
+        print("\nPDF loaded successfully.")
+        print("Type 'exit' to end the conversation.\n")
+
+        while True:
+
+            question = input("You: ").strip()
+
+            if question.lower() == "exit":
+                break
+
+            answer = chat_with_notes(
+                final_summary,
+                question,
+            )
+
+            print(f"\nAI: {answer}\n")
+
+    except Exception as error:
+
+        print("\n" + "=" * 50)
+        print("Failed to chat with PDF.")
+        print(error)
+        print("=" * 50)
 
 
 if __name__ == "__main__":
