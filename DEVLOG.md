@@ -253,3 +253,19 @@
 - The importance of reusable modules in larger Python projects.
 - How AI assistants can answer questions based on processed document summaries.
 
+## Day 17
+
+### Features
+- Added a file management module.
+- Implemented automatic result saving.
+- Created a dedicated results folder.
+- Saved AI summaries to summary.txt.
+- Saved generated quizzes to quiz.txt.
+- Saved generated flashcards to flashcards.txt.
+- Improved project organization by separating file operations.
+
+### What I Learned
+- How to work with files using Python.
+- How to automatically create folders with pathlib.
+- Why separating file management logic improves code organization.
+- How persistent outputs make AI applications more practical.

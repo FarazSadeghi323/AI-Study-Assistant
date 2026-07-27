@@ -7,6 +7,7 @@ from pdf_processor import process_pdf
 from ai.quiz_generator import generate_quiz
 from ai.flashcard_generator import generate_flashcards
 from ai.chat import chat_with_notes
+from file_manager import save_text
 
 
 def show_banner():
@@ -93,6 +94,12 @@ def summarize_pdf():
         print("=" * 50)
 
         print(final_summary)
+        summary_file = save_text(
+        "summary.txt",
+        final_summary,
+        )
+
+        print(f"\n✅ Summary saved to: {summary_file}")
 
     except Exception as error:
 
@@ -130,6 +137,12 @@ def quiz_pdf():
         print("=" * 50)
 
         print(quiz)
+        quiz_file = save_text(
+        "quiz.txt",
+        quiz,
+        )
+
+        print(f"\n✅ Quiz saved to: {quiz_file}")
 
     except Exception as error:
 
@@ -167,7 +180,12 @@ def flashcards_pdf():
         print("=" * 50)
 
         print(flashcards)
+        flashcards_file = save_text(
+        "flashcards.txt",
+        flashcards,
+        )
 
+        print(f"\n✅ Flashcards saved to: {flashcards_file}")
     except Exception as error:
 
         print("\n" + "=" * 50)

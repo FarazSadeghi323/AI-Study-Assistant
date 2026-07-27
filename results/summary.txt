@@ -1,0 +1,7 @@
+*   A maturity assessment framework was developed to evaluate digital transformation (DT) progress across the asset lifecycle management process.
+*   The framework integrates Building Information Modelling (BIM), data science, IoT, and AI technologies.
+*   It assesses DT maturity in large infrastructure asset owners and government-owned corporations (GOCs). 
+*   A practical tool utilizing a seven-category, 56-indicator approach and the Analytic Hierarchy Process (AHP) was created.
+*   The framework prioritizes improvements within asset management, delivery, and performance.
+*   Strategic alignment of DT is essential for enhancing organizational efficiency, innovation, and safety.
+*   Data integration and critical information management competencies are key components of the assessment. 

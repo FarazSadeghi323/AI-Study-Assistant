@@ -1,0 +1,47 @@
+Here are five multiple-choice questions based on the provided text:
+
+1.  Which of the following best describes the primary purpose of the described assessment framework?
+    A. To determine the cost of implementing digital transformation strategies.
+    B. To evaluate the maturity of digital transformation across an asset’s lifecycle.
+    C. To select the most appropriate Building Information Modelling software.
+    D. To identify potential risks associated with IoT implementation.
+
+    **Correct Answer: B**
+
+
+2.  The framework utilizes several technological elements. Which of the following is explicitly mentioned as a component?
+    A. Traditional Project Management methodologies 
+    B. Lean Manufacturing principles
+    C. Artificial Intelligence (AI)
+    D. Statistical Process Control
+
+    **Correct Answer: C**
+
+
+
+3.  What key area does the maturity assessment framework specifically address in terms of digital transformation?
+    A. Human Resource management practices within the organization.
+    B. The physical location of asset management systems.
+    C. Asset management, delivery and performance.
+    D. Market research for new technologies.
+
+     **Correct Answer: C**
+
+
+
+4.  The development of the assessment tool relies heavily on which methodology?
+    A. Monte Carlo Simulation 
+    B. AHP (Analytic Hierarchy Process) 
+    C. Six Sigma methodologies
+    D. Agile Development sprints
+
+    **Correct Answer: B**
+
+
+5.  What is a central consideration within the framework's design?
+    A. Solely focusing on technological advancements.
+    B. Strategic alignment with organizational objectives.
+    C. Minimizing the use of data for analysis.
+    D. Prioritizing short-term gains over long-term goals.
+
+   **Correct Answer: B** 

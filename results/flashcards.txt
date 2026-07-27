@@ -1,0 +1,29 @@
+Q: What was developed for digital transformation?
+A: A maturity assessment framework
+
+Q: What does the framework incorporate?
+A: DT & asset lifecycle management
+
+Q: Which process is used to assess DT maturity?
+A: Analytic Hierarchy Process (AHP)
+
+Q: How many categories are assessed?
+A: Seven
+
+Q: What are integral components of the framework?
+A: BIM and DE
+
+Q: What technologies are leveraged?
+A: Data science, IoT, & AI
+
+Q: What does the framework support?
+A: DT status evaluation & improvement goals
+
+Q: What is a key consideration within the assessment?
+A: Value of information
+
+Q: What competencies are important?
+A: Data integration & critical information management 
+
+Q: Who is the framework for?
+A: Large infrastructure asset owners & GOCs
