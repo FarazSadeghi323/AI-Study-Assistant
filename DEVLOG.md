@@ -269,3 +269,19 @@
 - How to automatically create folders with pathlib.
 - Why separating file management logic improves code organization.
 - How persistent outputs make AI applications more practical.
+
+## Day 18
+
+### Features
+- Added Markdown export support.
+- Saved AI summaries as both TXT and Markdown files.
+- Saved quizzes as both TXT and Markdown files.
+- Saved flashcards as both TXT and Markdown files.
+- Extended the file manager with reusable Markdown saving functions.
+- Improved compatibility with Markdown-based note-taking applications.
+
+### What I Learned
+- Markdown is a lightweight and widely supported documentation format.
+- Exporting data in multiple formats improves usability.
+- Reusable utility functions reduce duplicate code.
+- Small improvements can significantly enhance the user experience.
