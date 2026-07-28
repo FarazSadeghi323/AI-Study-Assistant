@@ -7,7 +7,10 @@ from pdf_processor import process_pdf
 from ai.quiz_generator import generate_quiz
 from ai.flashcard_generator import generate_flashcards
 from ai.chat import chat_with_notes
-from file_manager import save_text
+from file_manager import (
+    save_text,
+    save_markdown,
+)
 
 
 def show_banner():
@@ -94,13 +97,20 @@ def summarize_pdf():
         print("=" * 50)
 
         print(final_summary)
+
         summary_file = save_text(
-        "summary.txt",
-        final_summary,
+            "summary.txt",
+            final_summary,
+        )
+
+        markdown_file = save_markdown(
+            "summary.md",
+            "AI Study Assistant - Summary",
+            final_summary,
         )
 
         print(f"\n✅ Summary saved to: {summary_file}")
-
+        print(f"✅ Markdown saved to: {markdown_file}")
     except Exception as error:
 
         print("\n" + "=" * 50)
@@ -137,12 +147,20 @@ def quiz_pdf():
         print("=" * 50)
 
         print(quiz)
+
         quiz_file = save_text(
-        "quiz.txt",
-        quiz,
+            "quiz.txt",
+            quiz,
+        )
+
+        markdown_file = save_markdown(
+            "quiz.md",
+            "AI Study Assistant - Quiz",
+            quiz,
         )
 
         print(f"\n✅ Quiz saved to: {quiz_file}")
+        print(f"✅ Markdown saved to: {markdown_file}")
 
     except Exception as error:
 
@@ -180,12 +198,21 @@ def flashcards_pdf():
         print("=" * 50)
 
         print(flashcards)
+
         flashcards_file = save_text(
-        "flashcards.txt",
-        flashcards,
+            "flashcards.txt",
+            flashcards,
+        )
+
+        markdown_file = save_markdown(
+            "flashcards.md",
+            "AI Study Assistant - Flashcards",
+            flashcards,
         )
 
         print(f"\n✅ Flashcards saved to: {flashcards_file}")
+        print(f"✅ Markdown saved to: {markdown_file}")
+        
     except Exception as error:
 
         print("\n" + "=" * 50)

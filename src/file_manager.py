@@ -23,5 +23,20 @@ def save_text(filename, content):
 
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(content)
+        
 
-    return file_path
+def save_markdown(filename, title, content):
+    """
+    Save markdown into the results folder.
+    """
+
+    ensure_results_folder()
+
+    file_path = RESULTS_FOLDER / filename
+
+    markdown = f"# {title}\n\n{content}"
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(markdown)
+
+    return file_path    

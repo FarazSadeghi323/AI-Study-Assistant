@@ -1,3 +1,5 @@
+# AI Study Assistant - Summary
+
 *   A maturity assessment framework was developed to evaluate digital transformation within large infrastructure asset owners and government-owned corporations.
 *   The framework incorporates Building Information Modelling (BIM), Digital Engineering (DE), data science, IoT, and AI technologies.
 *   It assesses DT maturity across the entire asset lifecycle – including management, delivery, and performance.
