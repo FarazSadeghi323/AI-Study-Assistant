@@ -285,3 +285,33 @@
 - Exporting data in multiple formats improves usability.
 - Reusable utility functions reduce duplicate code.
 - Small improvements can significantly enhance the user experience.
+
+## Day 19
+
+### Features
+- Added the first graphical user interface using CustomTkinter.
+- Designed a modern dark-themed application window.
+- Added navigation buttons for all project features.
+- Connected the GUI to the existing application functions.
+
+### What I Learned
+- Learned the basics of CustomTkinter.
+- Built a desktop GUI using object-oriented programming.
+- Connected graphical components to existing backend logic.
+- Improved the user experience by moving beyond a terminal interface.
+
+## Day 20
+
+### Features
+- Added a status label to the graphical interface.
+- Added a progress bar to improve user feedback.
+- Implemented loading status updates.
+- Connected the first GUI action with a background thread.
+- Prevented the GUI from freezing while executing long-running tasks.
+- Improved the application's responsiveness.
+
+### What I Learned
+- Learned how to use threads in Python GUI applications.
+- Learned how to update GUI widgets dynamically.
+- Improved the user experience with loading indicators.
+- Understood the importance of keeping the GUI responsive during heavy operations.
