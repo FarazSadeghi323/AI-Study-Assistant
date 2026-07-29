@@ -12,7 +12,7 @@ def ensure_results_folder():
     RESULTS_FOLDER.mkdir(exist_ok=True)
 
 
-def save_text(filename, content):
+def save_text(filename, text):
     """
     Save text to a file inside the results folder.
     """
@@ -22,8 +22,9 @@ def save_text(filename, content):
     file_path = RESULTS_FOLDER / filename
 
     with open(file_path, "w", encoding="utf-8") as file:
-        file.write(content)
-        
+        file.write(text)
+
+    return file_path    
 
 def save_markdown(filename, title, content):
     """

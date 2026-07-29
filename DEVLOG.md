@@ -315,3 +315,33 @@
 - Learned how to update GUI widgets dynamically.
 - Improved the user experience with loading indicators.
 - Understood the importance of keeping the GUI responsive during heavy operations.
+
+# Day 21 – GUI Redesign and Application Layout
+
+## Date
+2026-07-29
+
+## Goal
+Redesign the desktop interface to provide a cleaner and more professional user experience.
+
+## Completed
+
+- Reorganized the GUI using a structured layout.
+- Added a dedicated header section.
+- Added a footer section.
+- Added a status label.
+- Added a progress bar.
+- Created separate left and right panels.
+- Moved all action buttons into the left panel.
+- Added an output panel for displaying future AI results.
+- Improved the overall application structure by splitting the interface into reusable methods.
+- Added threaded execution for long-running operations to keep the interface responsive.
+- Successfully tested the redesigned interface.
+
+## Files Updated
+
+- src/gui.py
+
+## Result
+
+The application now has a professional desktop layout that is much easier to extend with new AI features in the upcoming development days.

@@ -1,29 +1,29 @@
-Q: What is the primary focus of the maturity assessment framework?
-A: Digital Transformation (DT)
+Q: What was developed to evaluate digital transformation readiness?
+A: A maturity assessment framework
 
-Q: Which technologies are incorporated into the framework?
-A: BIM, DE, Data Science, IoT, AI
+Q: Name four key elements included in the framework.
+A: DT, ALM, BIM, DE
 
-Q: How many categories and indicators does the framework use?
-A: Seven Categories & 56 Indicators
+Q: Which tool was created for assessing DT maturity?
+A: An Excel-based tool
 
-Q: What process is used to assess DT maturity?
+Q: What process was used within the tool?
 A: Analytic Hierarchy Process (AHP)
 
-Q: What’s a critical component of successful digital transformation?
-A: Strategic Alignment
+Q: How many indicators were used in the assessment tool?
+A: 56
 
-Q: What aspects are integrated into the framework regarding information?
-A: Value of Information, Data Integration, Critical Information Management
+Q: What is critical for successful digital transformation initiatives?
+A: Strategic alignment with organizational objectives
 
-Q: How was the assessment tool validated?
-A: Case Study Research
+Q: Name three technologies recognized as transformative.
+A: BIM, DE, Data Science
 
-Q: Who is the target audience for this framework?
-A: Large Infrastructure Asset Owners & GOCs
+Q: What are essential components of the assessment?
+A: Data integration & CIM competencies
 
-Q: What type of modelling does it leverage?
-A: Building Information Modelling (BIM) 
+Q: What does the tool facilitate?
+A: Maturity evaluation and improvement strategies
 
-Q: What is the output of the framework?
-A: An Excel Assessment Tool
+Q: What type of assets is this framework designed for?
+A: Large infrastructure asset owners
