@@ -345,3 +345,146 @@ Redesign the desktop interface to provide a cleaner and more professional user e
 ## Result
 
 The application now has a professional desktop layout that is much easier to extend with new AI features in the upcoming development days.
+
+# Day 22 – GUI Integration & AI Summary Display
+
+**Date:** July 31, 2026
+
+## Today's Goal
+
+Transform the AI Study Assistant from a console-based application into a desktop GUI application and integrate the PDF summarization pipeline.
+
+---
+
+## What I Implemented
+
+### Desktop GUI
+
+Built a modern desktop interface using **CustomTkinter**.
+
+Features:
+
+- Added application title
+- Added subtitle
+- Added status bar
+- Added progress bar
+- Two-column responsive layout
+- Navigation buttons
+- Output panel
+- Footer
+
+---
+
+### Left Panel
+
+Implemented buttons for:
+
+- Summarize PDF
+- Generate Quiz
+- Generate Flashcards
+- Chat with Notes
+- Exit
+
+---
+
+### Right Panel
+
+Implemented an Output Box using ScrolledText.
+
+The application now displays:
+
+- PDF information
+- AI generated summary
+
+instead of printing everything only inside the terminal.
+
+---
+
+### Background Processing
+
+Used Python threading so the GUI does not freeze while the AI is generating responses.
+
+---
+
+### Progress Simulation
+
+Implemented a fake loading system that updates:
+
+- Processing PDF...
+- Generating AI Response...
+- Saving Results...
+- Completed
+
+using a progress bar.
+
+---
+
+### Summary Integration
+
+Connected the GUI with the existing summarization pipeline.
+
+Current workflow:
+
+User clicks
+
+Summarize PDF
+
+↓
+
+PDF processed
+
+↓
+
+AI summary generated
+
+↓
+
+Summary saved
+
+↓
+
+Summary displayed inside GUI
+
+---
+
+### Bug Fixes
+
+Fixed multiple issues during integration.
+
+Resolved:
+
+- ImportError for pdf_info
+- Wrong function name (show_output)
+- Missing PDF metadata function
+- GUI update issues
+- Output rendering bugs
+
+---
+
+## Current Status
+
+Completed:
+
+- PDF processing
+- AI summarization
+- GUI interface
+- Threading
+- Output viewer
+- TXT export
+- Markdown export
+
+The project now works as a real desktop application instead of a console script.
+
+---
+
+## Next Goal
+
+Day 23
+
+Implement the remaining AI tools inside the GUI:
+
+- Generate Quiz
+- Generate Flashcards
+- Chat with Notes
+
+and display their outputs inside the application.

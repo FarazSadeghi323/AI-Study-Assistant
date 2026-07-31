@@ -13,6 +13,7 @@ from file_manager import (
 )
 
 
+
 def show_banner():
     print("=" * 50)
     print("        AI Study Assistant")
@@ -111,12 +112,29 @@ def summarize_pdf():
 
         print(f"\n✅ Summary saved to: {summary_file}")
         print(f"✅ Markdown saved to: {markdown_file}")
+        info = get_pdf_information(pdf_path)
+        return f"""
+        PDF Information
+
+        File Name : {info['file_name']}
+        Pages     : {info['page_count']}
+        Author    : {info['author']}
+        Title     : {info['title']}
+        Size      : {info['file_size']} MB
+
+        ==================================================
+
+        FINAL SUMMARY
+
+        {final_summary}
+        """
     except Exception as error:
 
         print("\n" + "=" * 50)
         print("Failed to process PDF.")
         print(error)
         print("=" * 50)
+        return f"Error:\n\n{error}"
 
 
 def quiz_pdf():
@@ -168,6 +186,8 @@ def quiz_pdf():
         print("Failed to generate quiz.")
         print(error)
         print("=" * 50)
+        return f"Error:\n\n{error}"
+        
 
 
 def flashcards_pdf():

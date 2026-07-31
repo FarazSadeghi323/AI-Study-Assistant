@@ -289,12 +289,9 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.fake_loading()
 
-        summarize_pdf()
+        result = summarize_pdf()
 
-        self.show_output(
-            "Summary has been generated successfully.\n\n"
-            "The summary has also been saved in the results folder."
-        )
+        self.show_output(result)
 
     
 if __name__ == "__main__":
