@@ -1,29 +1,29 @@
-Q: What was developed to evaluate digital transformation readiness?
+Q: What was developed to evaluate digital transformation?
 A: A maturity assessment framework
 
-Q: Name four key elements included in the framework.
-A: DT, ALM, BIM, DE
+Q: Which technologies are integrated into the framework?
+A: BIM, DE, data science, IoT, AI
 
-Q: Which tool was created for assessing DT maturity?
-A: An Excel-based tool
+Q: What key areas does the framework assess?
+A: DT, asset lifecycle management, asset management, delivery, performance
 
-Q: What process was used within the tool?
-A: Analytic Hierarchy Process (AHP)
+Q: How were indicators ranked?
+A: Using the Analytic Hierarchy Process (AHP)
 
-Q: How many indicators were used in the assessment tool?
+Q: What tool was used for data input and evaluation?
+A: An Excel spreadsheet
+
+Q: How many indicators are in the spreadsheet?
 A: 56
 
-Q: What is critical for successful digital transformation initiatives?
+Q: Across how many categories are the indicators distributed?
+A: Seven
+
+Q: What is vital for successful digital transformation implementation?
 A: Strategic alignment with organizational objectives
 
-Q: Name three technologies recognized as transformative.
-A: BIM, DE, Data Science
+Q: What does the tool support organizations in doing?
+A: Determining current DT status and establishing improvement goals
 
-Q: What are essential components of the assessment?
-A: Data integration & CIM competencies
-
-Q: What does the tool facilitate?
-A: Maturity evaluation and improvement strategies
-
-Q: What type of assets is this framework designed for?
-A: Large infrastructure asset owners
+Q: Who is the framework designed for?
+A: Large infrastructure asset owners & GOCs

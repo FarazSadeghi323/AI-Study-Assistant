@@ -488,3 +488,39 @@ Implement the remaining AI tools inside the GUI:
 - Chat with Notes
 
 and display their outputs inside the application.
+
+# Day 23 – Connected AI Features to GUI
+
+## Date
+2026-08-01
+
+## What I did
+
+Today I completed the integration between the graphical user interface and the AI features.
+
+### Improvements
+
+- Connected the Quiz feature to the GUI.
+- Connected the Flashcards feature to the GUI.
+- Connected the Chat feature to the GUI.
+- Added output display for all AI tools inside the Output Box.
+- Fixed button callbacks to use GUI controller methods instead of calling backend functions directly.
+- Improved communication between backend functions and the interface using return values.
+- Displayed PDF information together with generated content.
+- Fixed several GUI update issues.
+- Verified that every feature works correctly after testing.
+
+## Result
+
+The application now provides a complete desktop interface where users can:
+
+- Summarize PDF documents
+- Generate quizzes
+- Generate flashcards
+- Chat with their study notes
+
+without relying on terminal output.
+
+## Next Goal
+
+Improve the user experience by removing repeated PDF selection, redesigning the chat interface, and polishing the desktop application.

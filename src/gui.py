@@ -151,7 +151,7 @@ class AIStudyAssistantGUI(ctk.CTk):
             width=button_width,
             height=button_height,
             command=lambda: threading.Thread(
-                target=quiz_pdf,
+                target=self.run_quiz,
                 daemon=True,
             ).start(),
         ).pack(pady=12, padx=15)
@@ -162,7 +162,7 @@ class AIStudyAssistantGUI(ctk.CTk):
             width=button_width,
             height=button_height,
             command=lambda: threading.Thread(
-                target=flashcards_pdf,
+                target=self.run_flashcards,
                 daemon=True,
             ).start(),
         ).pack(pady=12, padx=15)
@@ -173,7 +173,7 @@ class AIStudyAssistantGUI(ctk.CTk):
             width=button_width,
             height=button_height,
             command=lambda: threading.Thread(
-                target=chat_pdf,
+                target=self.run_chat,
                 daemon=True,
             ).start(),
         ).pack(pady=12, padx=15)
@@ -293,6 +293,30 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.show_output(result)
 
+
+    def run_quiz(self):
+
+        self.fake_loading()
+
+        result = quiz_pdf()
+        
+        self.show_output(result)
+
+    def run_flashcards(self):
+
+        self.fake_loading()
+
+        result = flashcards_pdf()
+
+        self.show_output(result)
+
+    def run_chat(self):
+
+        self.fake_loading()
+
+        result = chat_pdf()
+
+        self.show_output(result)
     
 if __name__ == "__main__":
     app = AIStudyAssistantGUI()

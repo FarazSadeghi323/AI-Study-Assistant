@@ -180,6 +180,24 @@ def quiz_pdf():
         print(f"\n✅ Quiz saved to: {quiz_file}")
         print(f"✅ Markdown saved to: {markdown_file}")
 
+        info = get_pdf_information(pdf_path)
+
+        return f"""
+        PDF Information
+
+        File Name : {info['file_name']}
+        Pages     : {info['page_count']}
+        Author    : {info['author']}
+        Title     : {info['title']}
+        Size      : {info['file_size']} MB
+py 
+        ==================================================
+
+        QUIZ
+
+        {quiz}
+        """
+
     except Exception as error:
 
         print("\n" + "=" * 50)
@@ -232,11 +250,98 @@ def flashcards_pdf():
 
         print(f"\n✅ Flashcards saved to: {flashcards_file}")
         print(f"✅ Markdown saved to: {markdown_file}")
+
+        info = get_pdf_information(pdf_path)
+
+        return f"""
+        PDF Information
+
+        File Name : {info['file_name']}
+        Pages     : {info['page_count']}
+        Author    : {info['author']}
+        Title     : {info['title']}
+        Size      : {info['file_size']} MB
+
+        ==================================================
+
+        FLASHCARDS
+
+        {flashcards}
+        """
         
     except Exception as error:
 
         print("\n" + "=" * 50)
         print("Failed to generate flashcards.")
+        print(error)
+        print("=" * 50)
+
+
+def chat_pdf():
+    """
+    Chat with a PDF using its AI-generated summary.
+    """
+
+    pdf_path = select_pdf()
+
+    if not pdf_path:
+        print("\nNo file selected.\n")
+        return
+
+    try:
+
+        print("\nProcessing PDF...\n")
+
+        data = process_pdf(pdf_path)
+
+        final_summary = data["final_summary"]
+
+        print("\nPDF loaded successfully.")
+        print("Type 'exit' to end the conversation.\n")
+
+        while True:
+
+            question = input("You: ").strip()
+
+            if question.lower() == "exit":
+                break
+
+            answer = chat_with_notes(
+                final_summary,
+                question,
+            )
+
+            print(f"\nAI: {answer}\n")
+
+            info = get_pdf_information(pdf_path)
+
+            return f"""
+            PDF Information
+
+            File Name : {info['file_name']}
+            Pages     : {info['page_count']}
+            Author    : {info['author']}
+            Title     : {info['title']}
+            Size      : {info['file_size']} MB
+
+            ==================================================
+
+            Question
+
+            {question}
+
+            ==================================================
+
+            Answer
+
+            {answer}
+            """
+            break
+
+    except Exception as error:
+
+        print("\n" + "=" * 50)
+        print("Failed to chat with PDF.")
         print(error)
         print("=" * 50)
 
@@ -278,50 +383,6 @@ def main():
 
         input("\nPress Enter to continue...")
         print()
-
-
-def chat_pdf():
-    """
-    Chat with a PDF using its AI-generated summary.
-    """
-
-    pdf_path = select_pdf()
-
-    if not pdf_path:
-        print("\nNo file selected.\n")
-        return
-
-    try:
-
-        print("\nProcessing PDF...\n")
-
-        data = process_pdf(pdf_path)
-
-        final_summary = data["final_summary"]
-
-        print("\nPDF loaded successfully.")
-        print("Type 'exit' to end the conversation.\n")
-
-        while True:
-
-            question = input("You: ").strip()
-
-            if question.lower() == "exit":
-                break
-
-            answer = chat_with_notes(
-                final_summary,
-                question,
-            )
-
-            print(f"\nAI: {answer}\n")
-
-    except Exception as error:
-
-        print("\n" + "=" * 50)
-        print("Failed to chat with PDF.")
-        print(error)
-        print("=" * 50)
 
 
 if __name__ == "__main__":
