@@ -1,0 +1,5 @@
+[33m04fa958[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Connect all AI features to GUI and improve output handling
+[33m407f48f[m Day 22: Integrate GUI with AI summarization pipeline
+[33mbc75a6f[m Redesign desktop GUI layout
+[33mecf3656[m Add GUI progress bar and status label
+[33m83fa19e[m Add Markdown export support

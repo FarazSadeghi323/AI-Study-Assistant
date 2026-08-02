@@ -524,3 +524,31 @@ without relying on terminal output.
 ## Next Goal
 
 Improve the user experience by removing repeated PDF selection, redesigning the chat interface, and polishing the desktop application.
+
+# Day 24 – GUI Improvements & Chat Integration
+
+## Date
+2026-08-02
+
+## Completed
+
+- Added "Select PDF" button to GUI.
+- Users now select the PDF only once.
+- Connected Summary, Quiz, Flashcards and Chat to the selected PDF.
+- Removed repeated PDF selection dialogs.
+- Added chat input field and Send button.
+- Moved chat interaction from terminal to GUI.
+- Integrated AI responses directly into the output panel.
+- Improved desktop workflow and usability.
+- Fixed GUI logic and callback issues.
+
+## Files Updated
+
+- src/gui.py
+- src/main.py
+- DEVLOG.md
+
+## Notes
+
+The application now behaves like a real desktop AI assistant.
+Users can choose a PDF once and interact with all AI features from the graphical interface without using the terminal.

@@ -29,7 +29,7 @@ class AIStudyAssistantGUI(ctk.CTk):
         # -----------------------------
         self.title("AI Study Assistant")
         self.geometry("1000x650")
-        self.minsize(1000, 650)
+        self.minsize(1000, 750)
 
         # -----------------------------
         # Main Grid
@@ -51,6 +51,7 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.create_output_box()
 
         self.create_footer()
+        self.selected_pdf = None
 
     def create_header(self):
         title = ctk.CTkLabel(
@@ -121,6 +122,9 @@ class AIStudyAssistantGUI(ctk.CTk):
             pady=10,
         )
 
+        self.right_frame.grid_rowconfigure(1, weight=1)
+        self.right_frame.grid_columnconfigure(0, weight=1)
+
     def create_footer(self):
         footer = ctk.CTkLabel(
             self,
@@ -130,9 +134,38 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         footer.pack(pady=(0, 10))
 
+
+    def select_pdf_file(self):
+
+        from tkinter import filedialog
+
+        file_path = filedialog.askopenfilename(
+            title="Select PDF",
+            filetypes=[("PDF files", "*.pdf")],
+        )
+
+        if not file_path:
+            return
+
+        self.selected_pdf = file_path
+
+        import os
+
+        self.status.configure(
+            text=f"Selected: {os.path.basename(file_path)}"
+        )  
+
     def create_buttons(self):
         button_width = 220
         button_height = 45
+
+        ctk.CTkButton(
+            self.left_frame,
+            text="📂 Select PDF",
+            width=button_width,
+            height=button_height,
+            command=self.select_pdf_file,
+        ).pack(pady=12, padx=15)
 
         ctk.CTkButton(
             self.left_frame,
@@ -212,6 +245,40 @@ class AIStudyAssistantGUI(ctk.CTk):
             pady=(0, 15),
         )
 
+        chat_frame = ctk.CTkFrame(self.right_frame)
+
+        chat_frame.pack(
+            fill="x",
+            padx=15,
+            pady=(0, 15),
+        )
+
+        chat_frame.grid_columnconfigure(0, weight=1)
+
+        self.chat_entry = ctk.CTkEntry(
+            chat_frame,
+            placeholder_text="Ask something about your PDF..."
+        )
+
+        self.chat_entry.grid(
+            row=0,
+            column=0,
+            sticky="ew",
+            padx=(0, 10),
+        )
+
+        self.send_button = ctk.CTkButton(
+            chat_frame,
+            text="Send",
+            width=100,
+            command=self.send_chat,
+        )
+
+        self.send_button.grid(
+            row=0,
+            column=1,
+        )
+
         self.output_box.insert(
             "end",
             "Welcome to AI Study Assistant.\n\n"
@@ -220,6 +287,49 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.output_box.configure(
             state="disabled",
+        )
+
+    def send_chat(self):
+
+        question = self.chat_entry.get().strip()
+
+        if not question:
+            return
+
+
+        self.output_box.configure(
+            state="normal"
+        )
+
+        self.output_box.insert(
+            "end",
+            f"\n\nYou:\n{question}\n"
+        )
+
+
+        answer = chat_pdf(
+            self.selected_pdf,
+            question
+        )
+
+
+        self.output_box.insert(
+            "end",
+            f"\nAI:\n{answer}\n"
+        )
+
+
+        self.output_box.see("end")
+
+
+        self.output_box.configure(
+            state="disabled"
+        )
+
+
+        self.chat_entry.delete(
+            0,
+            "end"
         )
 
     def show_output(self, text):
@@ -287,36 +397,62 @@ class AIStudyAssistantGUI(ctk.CTk):
 
     def run_summary(self):
 
+        if not self.selected_pdf:
+            self.show_output("Please select a PDF first.")
+            return
+
         self.fake_loading()
 
-        result = summarize_pdf()
+        result = summarize_pdf(self.selected_pdf)
 
         self.show_output(result)
 
 
     def run_quiz(self):
 
+        if not self.selected_pdf:
+            self.show_output("Please select a PDF first.")
+            return
+
         self.fake_loading()
 
-        result = quiz_pdf()
+        result = quiz_pdf(self.selected_pdf)
         
         self.show_output(result)
 
     def run_flashcards(self):
 
+        if not self.selected_pdf:
+            self.show_output("Please select a PDF first.")
+            return
+
         self.fake_loading()
 
-        result = flashcards_pdf()
+        result = flashcards_pdf(self.selected_pdf)
 
         self.show_output(result)
 
     def run_chat(self):
 
+        if not self.selected_pdf:
+            self.show_output("Please select a PDF first.")
+            return
+
         self.fake_loading()
 
-        result = chat_pdf()
+        question = self.chat_entry.get().strip()
+
+        if not question:
+            return
+
+
+        result = chat_pdf(
+            self.selected_pdf,
+            question,
+        )
 
         self.show_output(result)
+
     
 if __name__ == "__main__":
     app = AIStudyAssistantGUI()

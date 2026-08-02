@@ -1,31 +1,31 @@
 # AI Study Assistant - Flashcards
 
-Q: What was developed to evaluate digital transformation?
-A: A maturity assessment framework
+Q: What is being evaluated with the framework?
+A: Digital Transformation (DT)
 
-Q: Which technologies are integrated into the framework?
+Q: What are the key components integrated into the DT framework?
+A: BIM, DE, data integration, CIM
+
+Q: Which technologies are included within Digital Transformation?
 A: BIM, DE, data science, IoT, AI
 
-Q: What key areas does the framework assess?
-A: DT, asset lifecycle management, asset management, delivery, performance
+Q: Why is strategic alignment important for DT implementation?
+A: Organizational objectives
 
-Q: How were indicators ranked?
-A: Using the Analytic Hierarchy Process (AHP)
+Q: What process was used to develop the assessment tool?
+A: Analytic Hierarchy Process (AHP)
 
-Q: What tool was used for data input and evaluation?
-A: An Excel spreadsheet
-
-Q: How many indicators are in the spreadsheet?
+Q: How many indicators are in the assessment tool?
 A: 56
 
-Q: Across how many categories are the indicators distributed?
-A: Seven
+Q: What type of assessment tool is it?
+A: Seven-category
 
-Q: What is vital for successful digital transformation implementation?
-A: Strategic alignment with organizational objectives
+Q: What does the process support?
+A: Setting improvement targets
 
-Q: What does the tool support organizations in doing?
-A: Determining current DT status and establishing improvement goals
+Q: What kind of organizations was this framework developed for?
+A: Large infrastructure asset owners and government-owned corporations.
 
-Q: Who is the framework designed for?
-A: Large infrastructure asset owners & GOCs
+Q: What is the purpose of the framework?
+A: Maturity evaluation

@@ -47,16 +47,10 @@ def select_pdf():
     return pdf_path
 
 
-def summarize_pdf():
+def summarize_pdf(pdf_path):
     """
     Read a PDF and generate AI summaries.
     """
-
-    pdf_path = select_pdf()
-
-    if not pdf_path:
-        print("\nNo file selected.\n")
-        return
 
     try:
 
@@ -137,16 +131,10 @@ def summarize_pdf():
         return f"Error:\n\n{error}"
 
 
-def quiz_pdf():
+def quiz_pdf(pdf_path):
     """
     Generate a quiz from the final AI summary.
     """
-
-    pdf_path = select_pdf()
-
-    if not pdf_path:
-        print("\nNo file selected.\n")
-        return
 
     try:
 
@@ -208,16 +196,11 @@ py
         
 
 
-def flashcards_pdf():
+def flashcards_pdf(pdf_path):
     """
     Generate AI flashcards from a PDF.
     """
 
-    pdf_path = select_pdf()
-
-    if not pdf_path:
-        print("\nNo file selected.\n")
-        return
 
     try:
 
@@ -277,73 +260,49 @@ def flashcards_pdf():
         print("=" * 50)
 
 
-def chat_pdf():
+def chat_pdf(pdf_path,question):
     """
     Chat with a PDF using its AI-generated summary.
     """
-
-    pdf_path = select_pdf()
-
-    if not pdf_path:
-        print("\nNo file selected.\n")
-        return
-
+    
     try:
-
-        print("\nProcessing PDF...\n")
 
         data = process_pdf(pdf_path)
 
         final_summary = data["final_summary"]
 
-        print("\nPDF loaded successfully.")
-        print("Type 'exit' to end the conversation.\n")
+        answer = chat_with_notes(
+            final_summary,
+            question,
+        )
 
-        while True:
+        info = get_pdf_information(pdf_path)
 
-            question = input("You: ").strip()
+        return f"""
+    PDF Information
 
-            if question.lower() == "exit":
-                break
+    File Name : {info['file_name']}
+    Pages     : {info['page_count']}
+    Author    : {info['author']}
+    Title     : {info['title']}
+    Size      : {info['file_size']} MB
 
-            answer = chat_with_notes(
-                final_summary,
-                question,
-            )
+    ==================================================
 
-            print(f"\nAI: {answer}\n")
+    Question
 
-            info = get_pdf_information(pdf_path)
+    {question}
 
-            return f"""
-            PDF Information
+    ==================================================
 
-            File Name : {info['file_name']}
-            Pages     : {info['page_count']}
-            Author    : {info['author']}
-            Title     : {info['title']}
-            Size      : {info['file_size']} MB
+    Answer
 
-            ==================================================
-
-            Question
-
-            {question}
-
-            ==================================================
-
-            Answer
-
-            {answer}
-            """
-            break
+    {answer}
+    """
 
     except Exception as error:
 
-        print("\n" + "=" * 50)
-        print("Failed to chat with PDF.")
-        print(error)
-        print("=" * 50)
+        return f"Error:\n{error}"
 
 
 def main():
