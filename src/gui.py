@@ -12,6 +12,9 @@ from main import (
     chat_pdf,
 )
 
+import os
+import subprocess
+
 # -----------------------------
 # Theme
 # -----------------------------
@@ -29,7 +32,7 @@ class AIStudyAssistantGUI(ctk.CTk):
         # -----------------------------
         self.title("AI Study Assistant")
         self.geometry("1000x650")
-        self.minsize(1000, 750)
+        self.minsize(1000, 800)
 
         # -----------------------------
         # Main Grid
@@ -221,6 +224,14 @@ class AIStudyAssistantGUI(ctk.CTk):
             command=self.destroy,
         ).pack(pady=(30, 15), padx=15)
 
+        ctk.CTkButton(
+            self.left_frame,
+            text="📂 Open Results",
+            width=button_width,
+            height=button_height,
+            command=self.open_results_folder,
+        ).pack(pady=12, padx=15)
+
     def create_output_box(self):
         output_title = ctk.CTkLabel(
             self.right_frame,
@@ -260,6 +271,11 @@ class AIStudyAssistantGUI(ctk.CTk):
             placeholder_text="Ask something about your PDF..."
         )
 
+        self.chat_entry.bind(
+            "<Return>",
+            lambda event: self.send_chat(),
+        )
+
         self.chat_entry.grid(
             row=0,
             column=0,
@@ -274,10 +290,24 @@ class AIStudyAssistantGUI(ctk.CTk):
             command=self.send_chat,
         )
 
+        self.clear_button = ctk.CTkButton(
+            chat_frame,
+            text="🗑 Clear",
+            width=100,
+            command=self.clear_chat,
+        )
+
+        self.clear_button.grid(
+            row =0,
+            column=2,
+            padx=(5, 0),
+        )
+
         self.send_button.grid(
             row=0,
             column=1,
         )
+
 
         self.output_box.insert(
             "end",
@@ -306,6 +336,13 @@ class AIStudyAssistantGUI(ctk.CTk):
             f"\n\nYou:\n{question}\n"
         )
 
+        self.output_box.insert(
+            "end",
+            "\nAI:\nThinking...\n"
+        )
+
+        self.output_box.see("end")
+        self.update_idletasks()
 
         answer = chat_pdf(
             self.selected_pdf,
@@ -453,6 +490,39 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.show_output(result)
 
+
+    def open_results_folder(self):
+
+        results_path = os.path.join(
+            os.getcwd(),
+            "results",
+        )
+
+        if os.path.exists(results_path):
+            subprocess.Popen(f'explorer "{results_path}"')
+        else:
+            self.show_output("Results folder does not exist yet.")
+
+
+    def clear_chat(self):
+
+        self.output_box.configure(
+            state="normal"
+        )
+
+        self.output_box.delete(
+            "1.0",
+            "end",
+        )
+
+        self.output_box.insert(
+            "end",
+            "Chat cleared.\n"
+        )
+
+        self.output_box.configure(
+            state="disabled"
+        )
     
 if __name__ == "__main__":
     app = AIStudyAssistantGUI()

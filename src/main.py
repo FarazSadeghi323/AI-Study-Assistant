@@ -12,6 +12,12 @@ from file_manager import (
     save_markdown,
 )
 
+# ============================
+# Cache
+# ============================
+
+pdf_cache = {}
+
 
 
 def show_banner():
@@ -56,7 +62,12 @@ def summarize_pdf(pdf_path):
 
         info = get_pdf_information(pdf_path)
 
-        data = process_pdf(pdf_path)
+        if pdf_path in pdf_cache:
+            data = pdf_cache[pdf_path]
+        else:
+            data = process_pdf(pdf_path)
+            pdf_cache[pdf_path] = data
+
 
         chunks = data["chunks"]
         summaries = data["summaries"]
@@ -140,7 +151,11 @@ def quiz_pdf(pdf_path):
 
         print("\nProcessing PDF...\n")
 
-        data = process_pdf(pdf_path)
+        if pdf_path in pdf_cache:
+            data = pdf_cache[pdf_path]
+        else:
+            data = process_pdf(pdf_path)
+            pdf_cache[pdf_path] = data
 
         final_summary = data["final_summary"]
 
@@ -178,7 +193,7 @@ def quiz_pdf(pdf_path):
         Author    : {info['author']}
         Title     : {info['title']}
         Size      : {info['file_size']} MB
-py 
+
         ==================================================
 
         QUIZ
@@ -206,7 +221,11 @@ def flashcards_pdf(pdf_path):
 
         print("\nProcessing PDF...\n")
 
-        data = process_pdf(pdf_path)
+        if pdf_path in pdf_cache:
+            data = pdf_cache[pdf_path]
+        else:
+            data = process_pdf(pdf_path)
+            pdf_cache[pdf_path] = data
 
         final_summary = data["final_summary"]
 
@@ -267,7 +286,11 @@ def chat_pdf(pdf_path,question):
     
     try:
 
-        data = process_pdf(pdf_path)
+        if pdf_path in pdf_cache:
+            data = pdf_cache[pdf_path]
+        else:
+            data = process_pdf(pdf_path)
+            pdf_cache[pdf_path] = data
 
         final_summary = data["final_summary"]
 

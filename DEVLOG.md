@@ -552,3 +552,31 @@ Improve the user experience by removing repeated PDF selection, redesigning the 
 
 The application now behaves like a real desktop AI assistant.
 Users can choose a PDF once and interact with all AI features from the graphical interface without using the terminal.
+
+
+# Day 25 – Performance & User Experience Improvements
+
+## Date
+2026-08-03
+
+## Completed
+
+- Added PDF cache system to avoid repeated processing.
+- Improved application performance.
+- Added "Open Results Folder" button.
+- Added "Clear Chat" feature.
+- Enabled Enter key to send chat messages.
+- Improved chat user experience with loading feedback.
+- Refactored GUI workflow.
+
+## Files Updated
+
+- src/gui.py
+- src/main.py
+- DEVLOG.md
+
+## Notes
+
+Today's focus was improving application performance and user experience.
+The PDF is now processed only once and reused across all AI features.
+The desktop application feels much more responsive and closer to a production-ready release.
