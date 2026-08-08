@@ -580,3 +580,24 @@ Users can choose a PDF once and interact with all AI features from the graphical
 Today's focus was improving application performance and user experience.
 The PDF is now processed only once and reused across all AI features.
 The desktop application feels much more responsive and closer to a production-ready release.
+
+## 2026-08-01 — GUI Polish & Application Icon
+
+### Completed
+- Improved and finalized the CustomTkinter GUI.
+- Added a custom application icon.
+- Added the application icon asset under `assets/app_icon.png`.
+- Integrated the custom icon into the main GUI window.
+- Fixed GUI layout and geometry-manager issues.
+- Fixed the chat interface so questions can be sent directly from the GUI.
+- Verified PDF selection, summarization, quiz generation, flashcard generation, and chat functionality.
+- Tested the complete GUI after the latest changes.
+- Confirmed that all main GUI buttons are working correctly.
+
+### Git
+- Commit: `Complete GUI icon integration`
+- Commit Hash: `6fee590`
+- Changes pushed successfully to the `main` branch.
+
+### Current Status
+The GUI is now functional and visually polished, with a custom application icon and all major features working correctly.
