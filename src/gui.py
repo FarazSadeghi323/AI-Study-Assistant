@@ -27,6 +27,27 @@ class AIStudyAssistantGUI(ctk.CTk):
     def __init__(self):
         super().__init__()
 
+        import os
+        from PIL import Image, ImageTk
+
+        icon_path = os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                "..",
+                "assets",
+                "app_icon.png",
+            )
+        )
+
+        icon_image = Image.open(icon_path)
+        icon_photo = ImageTk.PhotoImage(icon_image)
+
+        self.iconphoto(False, icon_photo)
+
+        self._icon_photo = icon_photo
+        
+        
+
         # -----------------------------
         # Window
         # -----------------------------
