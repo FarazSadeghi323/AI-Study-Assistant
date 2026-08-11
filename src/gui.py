@@ -6,10 +6,12 @@ import customtkinter as ctk
 from tkinter.scrolledtext import ScrolledText
 
 from main import (
+    select_pdf,
     summarize_pdf,
     quiz_pdf,
     flashcards_pdf,
     chat_pdf,
+    chat_history,
 )
 
 import os
@@ -527,6 +529,14 @@ class AIStudyAssistantGUI(ctk.CTk):
 
     def clear_chat(self):
 
+        # Clear chat history for the selected PDF
+        if self.selected_pdf:
+            chat_history.pop(
+                self.selected_pdf,
+                None
+            )
+
+        # Clear output box
         self.output_box.configure(
             state="normal"
         )
