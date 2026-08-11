@@ -17,7 +17,7 @@ from file_manager import (
 # ============================
 
 pdf_cache = {}
-
+chat_history = {}
 
 
 def show_banner():
@@ -279,49 +279,82 @@ def flashcards_pdf(pdf_path):
         print("=" * 50)
 
 
-def chat_pdf(pdf_path,question):
+def chat_pdf(pdf_path, question):
     """
-    Chat with a PDF using its AI-generated summary.
+    Chat with a PDF using its AI-generated summary
+    and conversation history.
     """
-    
+
     try:
+
+        # -----------------------------
+        # Load PDF from cache
+        # -----------------------------
 
         if pdf_path in pdf_cache:
             data = pdf_cache[pdf_path]
+
         else:
             data = process_pdf(pdf_path)
             pdf_cache[pdf_path] = data
 
         final_summary = data["final_summary"]
 
+        # -----------------------------
+        # Get conversation history
+        # -----------------------------
+
+        if pdf_path not in chat_history:
+            chat_history[pdf_path] = []
+
+        history = chat_history[pdf_path]
+
+        # -----------------------------
+        # Ask AI
+        # -----------------------------
+
         answer = chat_with_notes(
             final_summary,
             question,
+            history
         )
+
+        # -----------------------------
+        # Save conversation
+        # -----------------------------
+
+        history.append({
+            "question": question,
+            "answer": answer
+        })
+
+        # -----------------------------
+        # PDF information
+        # -----------------------------
 
         info = get_pdf_information(pdf_path)
 
         return f"""
-    PDF Information
+PDF Information
 
-    File Name : {info['file_name']}
-    Pages     : {info['page_count']}
-    Author    : {info['author']}
-    Title     : {info['title']}
-    Size      : {info['file_size']} MB
+File Name : {info['file_name']}
+Pages     : {info['page_count']}
+Author    : {info['author']}
+Title     : {info['title']}
+Size      : {info['file_size']} MB
 
-    ==================================================
+==================================================
 
-    Question
+Question
 
-    {question}
+{question}
 
-    ==================================================
+==================================================
 
-    Answer
+Answer
 
-    {answer}
-    """
+{answer}
+"""
 
     except Exception as error:
 
