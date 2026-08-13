@@ -17,6 +17,20 @@ from main import (
 import os
 import subprocess
 
+
+# =============================
+# UI Colors
+# =============================
+
+NAVY = "#071A5C"
+NAVY_HOVER = "#0D2A8C"
+
+YELLOW = "#FFD21F"
+YELLOW_HOVER = "#FFE45C"
+
+WHITE = "#FFFFFF"
+BLACK = "#000000"
+
 # -----------------------------
 # Theme
 # -----------------------------
@@ -28,7 +42,9 @@ class AIStudyAssistantGUI(ctk.CTk):
 
     def __init__(self):
         super().__init__()
-
+        # -----------------------------
+        # Window Icon
+        # -----------------------------
         import os
         from PIL import Image, ImageTk
 
@@ -46,6 +62,7 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.iconphoto(False, icon_photo)
 
+        # Keep reference to prevent garbage collection
         self._icon_photo = icon_photo
         
         
@@ -54,8 +71,15 @@ class AIStudyAssistantGUI(ctk.CTk):
         # Window
         # -----------------------------
         self.title("AI Study Assistant")
-        self.geometry("1000x650")
+        self.geometry("1000x800")
         self.minsize(1000, 800)
+
+
+        # -----------------------------
+        # Application State
+        # -----------------------------
+        self.selected_pdf = None
+
 
         # -----------------------------
         # Main Grid
@@ -80,10 +104,12 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.selected_pdf = None
 
     def create_header(self):
+
         title = ctk.CTkLabel(
             self,
             text="AI Study Assistant",
             font=("Arial", 30, "bold"),
+            text_color=WHITE,
         )
 
         title.pack(pady=(20, 5))
@@ -91,16 +117,19 @@ class AIStudyAssistantGUI(ctk.CTk):
         subtitle = ctk.CTkLabel(
             self,
             text="Your AI-powered PDF learning assistant",
-            font=("Arial", 16),
+            font=("Arial", 15),
+            text_color="#A8B0C0",
         )
 
         subtitle.pack()
 
     def create_status_bar(self):
+
         self.status = ctk.CTkLabel(
             self,
             text="Status: Ready",
             font=("Arial", 15),
+            text_color="#A8B0C0",
         )
 
         self.status.pack(pady=(20, 5))
@@ -108,6 +137,7 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.progress = ctk.CTkProgressBar(
             self,
             width=500,
+            height=8,
         )
 
         self.progress.pack()
@@ -115,6 +145,7 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.progress.set(0)
 
     def create_layout(self):
+
         self.main_frame = ctk.CTkFrame(self)
 
         self.main_frame.pack(
@@ -128,7 +159,10 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.main_frame.grid_columnconfigure(1, weight=3)
         self.main_frame.grid_rowconfigure(0, weight=1)
 
-        self.left_frame = ctk.CTkFrame(self.main_frame)
+        self.left_frame = ctk.CTkFrame(
+            self.main_frame,
+            corner_radius=10,
+        )
 
         self.left_frame.grid(
             row=0,
@@ -138,7 +172,10 @@ class AIStudyAssistantGUI(ctk.CTk):
             pady=10,
         )
 
-        self.right_frame = ctk.CTkFrame(self.main_frame)
+        self.right_frame = ctk.CTkFrame(
+            self.main_frame,
+            corner_radius=10,
+        )
 
         self.right_frame.grid(
             row=0,
@@ -182,14 +219,22 @@ class AIStudyAssistantGUI(ctk.CTk):
         )  
 
     def create_buttons(self):
+
         button_width = 220
         button_height = 45
+
+        # -----------------------------
+        # Main Buttons
+        # -----------------------------
 
         ctk.CTkButton(
             self.left_frame,
             text="📂 Select PDF",
             width=button_width,
             height=button_height,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
             command=self.select_pdf_file,
         ).pack(pady=12, padx=15)
 
@@ -198,6 +243,9 @@ class AIStudyAssistantGUI(ctk.CTk):
             text="📄 Summarize PDF",
             width=button_width,
             height=button_height,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
             command=lambda: threading.Thread(
                 target=self.run_summary,
                 daemon=True,
@@ -209,6 +257,9 @@ class AIStudyAssistantGUI(ctk.CTk):
             text="📝 Generate Quiz",
             width=button_width,
             height=button_height,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
             command=lambda: threading.Thread(
                 target=self.run_quiz,
                 daemon=True,
@@ -220,6 +271,9 @@ class AIStudyAssistantGUI(ctk.CTk):
             text="🗂 Generate Flashcards",
             width=button_width,
             height=button_height,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
             command=lambda: threading.Thread(
                 target=self.run_flashcards,
                 daemon=True,
@@ -231,45 +285,77 @@ class AIStudyAssistantGUI(ctk.CTk):
             text="💬 Chat with Notes",
             width=button_width,
             height=button_height,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
             command=lambda: threading.Thread(
                 target=self.run_chat,
                 daemon=True,
             ).start(),
         ).pack(pady=12, padx=15)
 
+        # -----------------------------
+        # Exit Button
+        # -----------------------------
+
         ctk.CTkButton(
             self.left_frame,
             text="🚪 Exit",
             width=button_width,
             height=button_height,
-            fg_color="#B22222",
-            hover_color="#8B0000",
+            fg_color=YELLOW,
+            hover_color=YELLOW_HOVER,
+            text_color=BLACK,
             command=self.destroy,
         ).pack(pady=(30, 15), padx=15)
+
+        # -----------------------------
+        # Open Results
+        # -----------------------------
 
         ctk.CTkButton(
             self.left_frame,
             text="📂 Open Results",
             width=button_width,
             height=button_height,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
             command=self.open_results_folder,
         ).pack(pady=12, padx=15)
 
     def create_output_box(self):
+
+        # -----------------------------
+        # Output Title
+        # -----------------------------
+
         output_title = ctk.CTkLabel(
             self.right_frame,
             text="Output",
             font=("Arial", 18, "bold"),
+            text_color=WHITE,
         )
 
         output_title.pack(
             pady=(15, 10),
         )
 
+        # -----------------------------
+        # Output Box
+        # -----------------------------
+
         self.output_box = ScrolledText(
             self.right_frame,
             wrap="word",
             font=("Consolas", 11),
+            bg="#171717",
+            fg="#FFFFFF",
+            insertbackground="#FFFFFF",
+            selectbackground=NAVY,
+            selectforeground=WHITE,
+            relief="flat",
+            borderwidth=0,
         )
 
         self.output_box.pack(
@@ -279,7 +365,14 @@ class AIStudyAssistantGUI(ctk.CTk):
             pady=(0, 15),
         )
 
-        chat_frame = ctk.CTkFrame(self.right_frame)
+        # -----------------------------
+        # Chat Frame
+        # -----------------------------
+
+        chat_frame = ctk.CTkFrame(
+            self.right_frame,
+            corner_radius=10,
+        )  
 
         chat_frame.pack(
             fill="x",
@@ -287,12 +380,55 @@ class AIStudyAssistantGUI(ctk.CTk):
             pady=(0, 15),
         )
 
-        chat_frame.grid_columnconfigure(0, weight=1)
+        chat_frame.grid_columnconfigure(
+            0,
+            weight=1,
+        )
+
+        # -----------------------------
+        # Chat Entry
+        # -----------------------------
 
         self.chat_entry = ctk.CTkEntry(
             chat_frame,
-            placeholder_text="Ask something about your PDF..."
+            placeholder_text="Ask something about your PDF...",
+            height=40,
+            fg_color="#1E1E1E",
+            border_color="#3A3A3A",
+            text_color=WHITE,
+            placeholder_text_color="#888888",
         )
+
+        # -----------------------------
+        # Copy / Paste / Cut
+        # -----------------------------
+
+        self.chat_entry.bind(
+            "<Control-c>",
+            lambda event: self.chat_entry.event_generate("<<Copy>>"),
+        )
+
+        self.chat_entry.bind(
+            "<Control-v>",
+            lambda event: self.chat_entry.event_generate("<<Paste>>"),
+        )
+
+        self.chat_entry.bind(
+            "<Control-x>",
+            lambda event: self.chat_entry.event_generate("<<Cut>>"),
+        )
+
+        self.chat_entry.bind(
+            "<Control-a>",
+            lambda event: (
+                self.chat_entry.select_range(0, "end"),
+                "break",
+            )[1],
+        )
+
+        # -----------------------------
+        # Send with Enter
+        # -----------------------------
 
         self.chat_entry.bind(
             "<Return>",
@@ -303,34 +439,57 @@ class AIStudyAssistantGUI(ctk.CTk):
             row=0,
             column=0,
             sticky="ew",
-            padx=(0, 10),
+            padx=(10, 10),
+            pady=10,
         )
+
+        # -----------------------------
+        # Send Button
+        # -----------------------------
 
         self.send_button = ctk.CTkButton(
             chat_frame,
             text="Send",
             width=100,
+            height=40,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
             command=self.send_chat,
-        )
-
-        self.clear_button = ctk.CTkButton(
-            chat_frame,
-            text="🗑 Clear",
-            width=100,
-            command=self.clear_chat,
-        )
-
-        self.clear_button.grid(
-            row =0,
-            column=2,
-            padx=(5, 0),
         )
 
         self.send_button.grid(
             row=0,
             column=1,
+            padx=(0, 5),
+            pady=10,
         )
 
+        # -----------------------------
+        # Clear Button
+        # -----------------------------
+
+        self.clear_button = ctk.CTkButton(
+            chat_frame,
+            text="🗑 Clear",
+            width=100,
+            height=40,
+            fg_color=NAVY,
+            hover_color=NAVY_HOVER,
+            text_color=WHITE,
+            command=self.clear_chat,
+        )
+
+        self.clear_button.grid(
+            row=0,
+            column=2,
+            padx=(5, 10),
+            pady=10,
+        )
+
+        # -----------------------------
+        # Welcome Message
+        # -----------------------------
 
         self.output_box.insert(
             "end",
@@ -349,6 +508,9 @@ class AIStudyAssistantGUI(ctk.CTk):
         if not question:
             return
 
+        # -----------------------------
+        # Show User Question
+        # -----------------------------
 
         self.output_box.configure(
             state="normal"
@@ -367,32 +529,49 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.output_box.see("end")
         self.update_idletasks()
 
+        # -----------------------------
+        # Ask AI
+        # -----------------------------
+
         answer = chat_pdf(
             self.selected_pdf,
             question
         )
 
+        # -----------------------------
+        # Show AI Answer
+        # -----------------------------
 
         self.output_box.insert(
             "end",
             f"\nAI:\n{answer}\n"
         )
 
-
         self.output_box.see("end")
 
+        # -----------------------------
+        # Lock Output
+        # -----------------------------
 
         self.output_box.configure(
             state="disabled"
         )
 
+        # -----------------------------
+        # Clear Input
+        # -----------------------------
 
         self.chat_entry.delete(
             0,
             "end"
         )
 
+        # Return focus to chat input
+        self.chat_entry.focus_set()
+
+
     def show_output(self, text):
+
         self.output_box.configure(
             state="normal",
         )
@@ -410,15 +589,19 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.output_box.configure(
             state="disabled",
         )
+
+
     def update_status(self, text, progress):
 
         self.status.configure(
-            text=f"Status: {text}"
-        )
+            text=f"Status: {text}",
+            text_color=WHITE,
+        )  
 
         self.progress.set(progress)
 
         self.update_idletasks()
+
 
     def fake_loading(self):
 
@@ -495,16 +678,17 @@ class AIStudyAssistantGUI(ctk.CTk):
     def run_chat(self):
 
         if not self.selected_pdf:
-            self.show_output("Please select a PDF first.")
+            self.show_output(
+                "Please select a PDF first."
+            )
             return
-
-        self.fake_loading()
 
         question = self.chat_entry.get().strip()
 
         if not question:
             return
 
+        self.fake_loading()
 
         result = chat_pdf(
             self.selected_pdf,
@@ -513,6 +697,12 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.show_output(result)
 
+        self.chat_entry.delete(
+            0,
+            "end",
+        )
+
+        self.chat_entry.focus_set()
 
     def open_results_folder(self):
 
