@@ -601,3 +601,51 @@ The desktop application feels much more responsive and closer to a production-re
 
 ### Current Status
 The GUI is now functional and visually polished, with a custom application icon and all major features working correctly.
+
+
+## 2026-08-05 — Context-Aware Chat, Chat Management & v0.2.0
+
+### Completed
+- Added context-aware conversations for PDF chat.
+- Added conversation history for each selected PDF.
+- Improved the AI chat so follow-up questions can reference previous messages.
+- Added support for contextual references such as:
+  - "the second one"
+  - "the first one"
+  - "that"
+  - "this"
+  - "the previous one"
+- Added Clear Chat functionality.
+- Clear Chat now also removes the conversation history associated with the selected PDF.
+- Added Copy, Paste, Cut, and Select All keyboard shortcuts to the chat input.
+- Added Enter-to-send functionality for chat questions.
+- Improved GUI button styling and application colors.
+- Added consistent navy and yellow UI colors.
+- Improved the overall chat interface and user experience.
+- Tested context-aware follow-up questions successfully.
+- Tested the updated GUI and chat management functionality.
+- Verified that the main PDF features continue to work correctly.
+
+### Git
+- Added context-aware PDF chat feature.
+- Added chat management functionality.
+- Improved GUI styling.
+- Changes merged into the `main` branch.
+- Changes pushed successfully to GitHub.
+
+### Release
+- Version: `v0.2.0`
+- Tag: `v0.2.0`
+- Release message: `Release version 0.2.0`
+
+### Current Status
+The project now includes context-aware PDF conversations, chat history management, improved chat controls, and a more polished desktop GUI.
+
+The `v0.2.0` milestone has been completed and pushed to GitHub successfully.
+
+### Next Goals
+- Improve AI response quality and reliability.
+- Improve PDF question answering.
+- Add more robust testing.
+- Improve project documentation.
+- Prepare the project for the `v1.0.0` release.
