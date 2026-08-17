@@ -1,7 +1,8 @@
 from ai.provider import ask_ai
+from ai.retriever import retrieve_relevant_chunks
 
 
-def chat_with_notes(summary, question, history=None):
+def chat_with_notes(summary, chunks, question, history=None):
     """
     Answer a user's question using the PDF summary
     and previous conversation history.
@@ -10,7 +11,16 @@ def chat_with_notes(summary, question, history=None):
     if history is None:
         history = []
 
+    relevant_chunks = retrieve_relevant_chunks(
+        chunks,
+        question,
+        top_k=3,
+    )
+
     conversation = ""
+    retrieved_context = "\n\n".join(
+        relevant_chunks
+    )
 
     for item in history:
         conversation += f"""
@@ -48,6 +58,12 @@ IMPORTANT RULES:
 "I couldn't find that information in the document."
 
 DOCUMENT:
+
+RELEVANT DOCUMENT SECTIONS:
+
+{retrieved_context}
+
+DOCUMENT SUMMARY:
 
 {summary}
 

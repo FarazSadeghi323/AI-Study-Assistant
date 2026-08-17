@@ -299,6 +299,7 @@ def chat_pdf(pdf_path, question):
             pdf_cache[pdf_path] = data
 
         final_summary = data["final_summary"]
+        chunks = data["chunks"]
 
         # -----------------------------
         # Get conversation history
@@ -315,6 +316,7 @@ def chat_pdf(pdf_path, question):
 
         answer = chat_with_notes(
             final_summary,
+            chunks,
             question,
             history
         )
