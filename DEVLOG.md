@@ -649,3 +649,53 @@ The `v0.2.0` milestone has been completed and pushed to GitHub successfully.
 - Add more robust testing.
 - Improve project documentation.
 - Prepare the project for the `v1.0.0` release.
+
+## 2026-08-11 — PDF Retrieval & Context-Aware Chat
+
+### Completed
+- Added a new PDF retrieval module for finding relevant document sections.
+- Implemented keyword-based relevance scoring for PDF chunks.
+- Added support for retrieving the most relevant chunks for each user question.
+- Integrated PDF retrieval into the AI chat pipeline.
+- Updated the chat system to use both the document summary and retrieved document sections.
+- Improved question answering by providing the AI with more relevant information from the original PDF.
+- Preserved conversation history and context-aware follow-up questions.
+- Updated the main application to pass processed PDF chunks to the chat system.
+- Tested the retrieval system with sample document chunks.
+- Verified that irrelevant chunks are filtered out when answering questions.
+- Tested the complete PDF chat workflow through the GUI.
+- Confirmed that PDF retrieval and context-aware conversations work correctly.
+
+### Technical Changes
+
+#### New
+- `src/ai/retriever.py`
+
+#### Updated
+- `src/ai/chat.py`
+- `src/main.py`
+
+### Retrieval Pipeline
+
+The PDF chat system now follows this workflow:
+
+PDF
+→ Text Extraction
+→ Text Chunking
+→ Relevant Chunk Retrieval
+→ Context-Aware AI Chat
+→ Answer
+
+Instead of relying only on the generated document summary, the system can now retrieve relevant sections from the original PDF based on the user's question.
+
+### Git
+- Branch: `feature/pdf-retrieval`
+- Commit: `Add PDF retrieval to chat`
+- Commit Hash: `4e72be6`
+- Feature merged into `main`
+- Changes pushed successfully to GitHub.
+
+### Current Status
+The project now includes a basic document retrieval layer that improves the accuracy and relevance of PDF-based conversations.
+
+The AI Study Assistant is gradually moving from a simple PDF processing application toward a retrieval-based AI study system.
