@@ -387,7 +387,30 @@ def main():
 
         elif choice == "4":
 
-            chat_pdf()
+            pdf_path = select_pdf()
+
+            if not pdf_path:
+                print("No PDF selected.")
+                continue
+
+            print("\nChat with PDF")
+            print("Type 'exit' to return to the main menu.")
+
+            while True:
+
+                question = input("\nYou: ").strip()
+
+                if question.lower() == "exit":
+                    break
+
+                if not question:
+                    print("Please enter a question.")
+                    continue
+
+                chat_pdf(
+                    pdf_path,
+                    question,
+                )
 
         elif choice == "5":
 
