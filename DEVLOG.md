@@ -699,3 +699,46 @@ Instead of relying only on the generated document summary, the system can now re
 The project now includes a basic document retrieval layer that improves the accuracy and relevance of PDF-based conversations.
 
 The AI Study Assistant is gradually moving from a simple PDF processing application toward a retrieval-based AI study system.
+
+## Version 0.4.0 - Semantic Retrieval
+
+### Added
+
+- Added semantic embeddings using the `nomic-embed-text` model through Ollama.
+- Added `embeddings.py` for generating text embeddings and calculating cosine similarity.
+- Improved document retrieval using semantic similarity instead of relying only on keyword matching.
+- Added hybrid retrieval that combines semantic similarity with keyword relevance.
+- Added retrieval scores for better debugging and evaluation of document search results.
+- Improved document chunking to create more meaningful and useful text sections.
+
+### Improved
+
+- Improved the accuracy of PDF question answering by retrieving more relevant document sections.
+- Improved follow-up questions by using previous conversation context when building retrieval queries.
+- Improved the chat system so questions such as "Explain that with a simple example" can use the previous conversation context.
+- Improved the terminal chat workflow in `main.py`.
+
+### Technical Details
+
+- Local AI model: `gemma3:4b`
+- Embedding model: `nomic-embed-text`
+- Embedding vector size: 768
+- Similarity method: Cosine Similarity
+- Retrieval method: Hybrid Semantic + Keyword Retrieval
+- Retrieval runs locally through Ollama.
+
+### Example
+
+The assistant can now identify that:
+
+> "Why is giving different importance to assessment indicators useful?"
+
+is semantically related to document sections discussing:
+
+> assigning different weights to indicators based on their importance to improve assessment accuracy.
+
+This allows the system to retrieve relevant information even when the user's question does not use exactly the same words as the document.
+
+### Result
+
+The PDF chat system now supports more intelligent semantic search, improved document retrieval, and better follow-up question understanding.
