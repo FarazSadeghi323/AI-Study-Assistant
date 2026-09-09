@@ -398,9 +398,11 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         # Hide normal output
         self.output_box.pack_forget()
+        self.hide_chat_bar()
 
         # Hide quiz if it is already visible
         self.quiz_frame.pack_forget()
+        self.hide_chat_bar()
 
         settings_frame = ctk.CTkFrame(
             self.right_frame,
@@ -588,6 +590,7 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.display_quiz_question()
         self.finish_processing()
+        self.hide_chat_bar()
 
 
     def create_footer(self):
@@ -1042,6 +1045,7 @@ class AIStudyAssistantGUI(ctk.CTk):
 
         self.output_title.pack_forget()
         self.output_box.pack_forget()
+        self.hide_chat_bar()
         self.chat_frame.pack_forget()
 
 
@@ -1063,6 +1067,34 @@ class AIStudyAssistantGUI(ctk.CTk):
             padx=15,
             pady=(0, 15),
         )
+
+
+    def hide_chat_bar(self):
+
+        if hasattr(self, "chat_frame"):
+            self.chat_frame.pack_forget()
+
+
+    def show_chat_bar(self):
+
+        if hasattr(self, "chat_frame"):
+            self.chat_frame.pack(
+                fill="x",
+                padx=15,
+                pady=(0, 15),
+            )
+
+            self.chat_entry.configure(
+                state="normal"
+            )
+
+            self.send_button.configure(
+                state="normal"
+            )
+
+            self.clear_button.configure(
+                state="normal"
+            )
 
     def show_output(self, text):
 
@@ -1374,6 +1406,7 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.start_processing(
             "Generating flashcards..."
         )
+        self.hide_chat_bar()
 
         def generate_flashcards():
 
@@ -1431,6 +1464,7 @@ class AIStudyAssistantGUI(ctk.CTk):
         self.hide_output_area()
 
         self.quiz_frame.pack_forget()
+        self.hide_chat_bar()
 
         self.flashcard_frame.pack(
             fill="both",
@@ -1920,6 +1954,8 @@ class AIStudyAssistantGUI(ctk.CTk):
             hover_color=YELLOW_HOVER,
             text_color=BLACK,
         )
+
+        self.show_chat_bar()
 
 
     def restart_quiz(self):

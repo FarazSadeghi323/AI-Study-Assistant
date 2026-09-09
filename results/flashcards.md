@@ -1,31 +1,31 @@
 # AI Study Assistant - Flashcards
 
-Q: Who developed the DT Maturity Assessment Framework?
-A: Large, government-owned corporations (GOCs)
+Q: What is the primary focus of the Digital Transformation (DT) Maturity Assessment Framework?
+A: Large government-owned corporations (GOCs)
 
-Q: In what country was the framework primarily developed?
+Q: In what region is the framework primarily targeted?
 A: Australia
 
-Q: What technologies are integrated into the framework?
+Q: What technologies does the framework incorporate?
 A: BIM, DE, and CIM
 
 Q: How many indicators does the framework assess?
 A: 56
 
 Q: What process is used for ranking the indicators?
-A: Analytical Hierarchy Process (AHP)
+A: Analytic Hierarchy Process (AHP)
 
-Q: What are the three areas the framework encompasses?
-A: Asset management, asset delivery, and asset performance
+Q: What aspects does the assessment support?
+A: Asset management, delivery, and performance
 
-Q: What does the tool support?
-A: Data input and evaluation
+Q: What does the tool facilitate?
+A: Data input and maturity evaluation
 
-Q: Who conducted the research?
-A: Academics at multiple universities
+Q: Who was involved in the research?
+A: Multiple universities and institutions
 
-Q: What is the primary goal of the framework?
-A: Determine current DT status and identify areas for improvement
+Q: What is the purpose of the assessment?
+A: Establish improvement targets
 
-Q: What is the overall purpose of the framework?
-A: DT Maturity Assessment
+Q: What is the name of the framework?
+A: Digital Transformation (DT) Maturity Assessment Framework

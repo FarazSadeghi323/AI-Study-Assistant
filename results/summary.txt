@@ -1,6 +1,7 @@
-*   A Digital Transformation (DT) Maturity Assessment Framework was developed for large, government-owned corporations (GOCs), primarily Australian Government Organizations.
-*   The framework incorporates Building Information Modelling (BIM), digital engineering (DE), and critical information management.
-*   It assesses DT maturity across 56 indicators, utilizing the Analytical Hierarchy Process (AHP) for ranking based on expert opinion.
-*   The assessment tool facilitates data input and evaluation to determine DT status and identify areas for improvement.
-*   The research involved a multi-university collaborative project originating from Australia.
-*   The framework is relevant to asset management, asset delivery, and asset performance.
+*   A research article details a Digital Transformation Maturity Assessment Framework.
+*   The framework targets large infrastructure asset owners, specifically focusing on large government-owned corporations (GOCs).
+*   It incorporates Building Information Modelling (BIM), digital engineering (DE), and critical information management.
+*   The assessment tool evaluates Digital Twin (DT) maturity across 56 indicators using the analytical hierarchy process (AHP).
+*   The framework aims to enhance asset management, delivery, and overall performance.
+*   The tool supports organizations in determining their current DT status and identifying strategic improvement targets.
+*   The research involved multiple universities and institutes.

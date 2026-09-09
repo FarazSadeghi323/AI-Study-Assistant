@@ -1,218 +1,128 @@
-# 🤖 AI Study Assistant
+# AI Study Assistant
 
-An AI-powered desktop application built with **Python**, **CustomTkinter**, and **local Large Language Models** that helps university students study more efficiently by interacting with PDF documents.
+AI Study Assistant is a local AI-powered study tool designed to help university students learn from their PDF documents.
 
-The application can summarize lecture notes, generate quizzes and flashcards, and answer questions based on uploaded PDF documents.
+The application can analyze PDF documents, generate summaries, create interactive quizzes and flashcards, and answer questions using the content of the selected document.
 
-The project uses **local AI models through Ollama**, allowing document analysis and AI-powered interactions without requiring a cloud API key.
-
-The project is being developed publicly as a practical software engineering and AI development project.
-
-![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Active-success)
-![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
-![GUI](https://img.shields.io/badge/GUI-CustomTkinter-orange)
-![AI](https://img.shields.io/badge/AI-Ollama-purple)
-![Version](https://img.shields.io/badge/Version-v0.4.0-blue)
+The project combines document processing, semantic retrieval, local AI models, and a graphical user interface into a single study assistant.
 
 ---
 
-## ✨ Features
+## Features
 
-### 📚 Study Tools
+### PDF Summarization
 
-- 📄 **PDF Summarization**
-  - Extracts text and information from PDF documents.
-  - Processes large documents using text chunking.
-  - Generates AI-powered summaries.
+Select a PDF document and generate an AI-powered summary of its content.
 
-- 📝 **AI Quiz Generation**
-  - Generates study questions from PDF content.
-  - Helps students review lecture material.
+The generated summary can also be saved in the results directory.
 
-- 🗂 **Flashcard Generation**
-  - Creates AI-generated flashcards from PDF documents.
-  - Supports exporting generated flashcards for later review.
+### Interactive Quiz
 
----
+Generate multiple-choice questions from the selected PDF.
 
-## 💬 AI PDF Chat
+The quiz system supports:
 
-The application allows users to ask questions about uploaded PDF documents.
+- Configurable number of questions
+- Easy, Medium, and Hard difficulty levels
+- Multiple-choice questions
+- Immediate answer feedback
+- Explanations
+- Score calculation
+- Accuracy percentage
+- Quiz restart
 
-### Chat capabilities
+### Study Flashcards
 
-- Ask questions about PDF documents.
-- Retrieve relevant document sections before generating an answer.
-- Uses **semantic search** to find relevant information.
-- Uses hybrid **Semantic + Keyword Retrieval**.
-- Supports context-aware follow-up questions.
-- Maintains conversation history for each PDF.
-- Understands references such as:
-  - "the second one"
-  - "the previous point"
-  - "that"
-  - "this"
-  - "it"
-  - "explain that"
+Generate study flashcards from the selected PDF.
 
-### 🧠 Semantic Retrieval
+The flashcard system supports:
 
-The AI Study Assistant uses embeddings to understand the meaning of questions and document sections.
+- Question and answer cards
+- Answer reveal
+- Card-by-card navigation
+- Progress tracking
+- Review Again functionality
 
-The system uses:
+### Chat with Notes
 
-- `nomic-embed-text`
-- 768-dimensional embedding vectors
-- Cosine Similarity
-- Hybrid Semantic + Keyword Retrieval
+Ask questions about the selected PDF and receive AI-generated answers based on the document.
 
-This allows the application to retrieve relevant information even when the user's question does not use exactly the same words as the PDF document.
+The chat system supports contextual follow-up questions and document-based retrieval.
 
----
+### Semantic Retrieval
 
-## 🧹 Chat Management
+The application uses semantic embeddings to find document sections that are conceptually related to a user's question.
 
-- 🗑 Clear chat history.
-- ⌨️ `Enter` to send questions.
-- 📋 Copy and Paste support.
-- ✂️ Cut support.
-- `Ctrl + A` to select the complete question.
-- Conversation history for each PDF.
-- Context-aware follow-up questions.
+This allows the assistant to understand questions even when the exact words used by the user do not appear in the document.
+
+### Hybrid Retrieval
+
+Document retrieval combines:
+
+- Semantic similarity
+- Keyword relevance
+
+This improves the relevance of retrieved document sections.
+
+### Local AI
+
+The project uses Ollama to run AI models locally.
+
+This allows the main AI processing pipeline to work without sending the document content to a remote AI service.
 
 ---
 
-## 🖥 Desktop GUI
+## How It Works
 
-- Built with **CustomTkinter**.
-- Modern dark interface.
-- Custom application icon.
-- Improved button styling.
-- Dedicated PDF selection and output areas.
-- Progress and status indicators.
-- Desktop chat interface.
+The general workflow is:
 
----
-
-## 📤 Export
-
-Generated results can be saved as:
-
-- `.txt`
-- `.md`
-
-Supported exports include:
-
-- PDF summaries
-- Quizzes
-- Flashcards
+PDF
+↓
+Text Extraction
+↓
+Text Chunking
+↓
+Embedding Generation
+↓
+Semantic + Keyword Retrieval
+↓
+Relevant Context
+↓
+Local AI Model
+↓
+Answer / Summary / Quiz / Flashcards
 
 ---
 
-## 🎯 Project Workflow
+## AI Models
+
+The project currently uses:
+
+- `gemma3:4b` for AI generation
+- `nomic-embed-text` for semantic embeddings
+
+Embeddings are compared using cosine similarity.
+
+---
+
+## Technologies
+
+- Python
+- CustomTkinter
+- Tkinter
+- Ollama
+- PyMuPDF
+- pypdf
+- NumPy
+- Regular Expressions
+- Threading
+- Git / GitHub
+
+---
+
+## Project Structure
 
 ```text
-Select PDF
-    ↓
-Extract Text
-    ↓
-Process & Chunk Document
-    ↓
-AI Analysis
-    ↓
-┌───────────────────────┐
-│ Summary               │
-│ Quiz                  │
-│ Flashcards            │
-│ Chat with Notes       │
-└───────────────────────┘
-
-User Question
-      ↓
-Conversation Context
-      ↓
-Hybrid Retrieval
-(Semantic + Keyword)
-      ↓
-Relevant PDF Sections
-      ↓
-Local LLM
-      ↓
-AI Answer
-
-🛠 Technologies
-Python 3.12+
-CustomTkinter
-PyMuPDF
-Pillow
-Ollama
-Gemma 3
-nomic-embed-text
-Git
-GitHub
-
-🤖 Local AI Models
-
-The project currently uses Ollama to run AI models locally.
-
-Chat and Generation Model
-      gemma3:4b
-
-Used for:
-
-Summarization
-Quiz generation
-Flashcard generation
-PDF chat
-Embedding Model
-      nomic-embed-text
-
-Used for:
-
-Generating semantic embeddings
-Document retrieval
-Question-to-document similarity comparison
-
-📦 Requirements
-Software
-Python 3.12+
-Ollama
-Git
-Ollama Models
-
-Install Ollama from the official website and download the required models:
-
-ollama pull gemma3:4b
-ollama pull nomic-embed-text
-
-🚀 Installation
-1. Clone the repository
-git clone https://github.com/FarazSadeghi323/AI-Study-Assistant.git
-2. Go to the project directory
-cd AI-Study-Assistant
-3. Create a virtual environment
-python -m venv .venv
-4. Activate the virtual environment
-
-Windows PowerShell:
-
-.venv\Scripts\Activate.ps1
-5. Install dependencies
-pip install -r requirements.txt
-6. Install local AI models
-ollama pull gemma3:4b
-ollama pull nomic-embed-text
-7. Verify Ollama models
-ollama list
-▶️ Run
-
-Start the desktop application with:
-
-python src/gui.py
-
-📁 Project Structure
 AI-Study-Assistant/
 │
 ├── assets/
@@ -230,127 +140,141 @@ AI-Study-Assistant/
 │   └── flashcards.txt
 │
 ├── src/
+│   ├── ai/
+│   │   ├── chat.py
+│   │   ├── embeddings.py
+│   │   ├── flashcard_parser.py
+│   │   ├── quiz_parser.py
+│   │   ├── quiz_generator.py
+│   │   ├── retriever.py
+│   │   └── prompts.py
+│   │
 │   ├── gui.py
 │   ├── main.py
-│   ├── pdf_reader.py
-│   ├── pdf_processor.py
-│   ├── text_processor.py
-│   │
-│   └── ai/
-│       ├── provider.py
-│       ├── chat.py
-│       ├── embeddings.py
-│       ├── retriever.py
-│       ├── quiz_generator.py
-│       └── flashcard_generator.py
+│   └── ...
 │
-├── README.md
 ├── DEVLOG.md
+├── README.md
 └── requirements.txt
-📈 Development Progress
-v0.1.0
 
-Initial stable project milestone.
 
-Desktop GUI
+
+```
+
+## Installation
+1. Clone the repository
+git clone https://github.com/FarazSadeghi323/AI-Study-Assistant.git
+cd AI-Study-Assistant
+
+2. Create a virtual environment
+python -m venv .venv
+
+3. Activate the virtual environment
+
+Windows PowerShell:
+.\.venv\Scripts\Activate.ps1
+
+4. Install dependencies
+pip install -r requirements.txt
+
+5. Install Ollama
+
+Install Ollama and make sure it is running on your system.
+
+Then pull the required models:
+ollama pull gemma3:4b
+ollama pull nomic-embed-text
+
+Running the Application
+
+Start the GUI with:
+python src/gui.py
+
+The application will open the AI Study Assistant interface.
+
+Select a PDF and choose one of the available study tools.
+
+
+## Example Workflow
+1.Open the application.
+2.Select a PDF document.
+3.Generate a summary.
+4.Generate an interactive quiz.
+5.Review generated flashcards.
+6.Ask questions using Chat with Notes.
+7.Open the results folder to view generated files.
+
+## Results
+
+Generated outputs are stored in the results/ directory.
+
+The application can generate:
+PDF summaries
+Quiz files
+Flashcard files
+
+Both Markdown and text formats are supported.
+
+
+Current Status
+
+The project has evolved from a basic PDF processing tool into a local AI-powered study assistant.
+
+Current capabilities include:
+
 PDF processing
 AI summarization
-Quiz generation
-Flashcard generation
-Basic PDF chat
-Result export
-v0.2.0
+Semantic document retrieval
+Hybrid retrieval
+Context-aware PDF chat
+Interactive quizzes
+Interactive flashcards
+GUI-based study workflow
+Local AI inference
 
-Context-aware Chat & GUI Improvements
+Known Limitations
 
-Context-aware PDF conversations
-Per-PDF conversation history
-Clear chat functionality
-Copy / Paste / Cut support
-Enter-to-send
-Improved GUI styling
-Custom application icon
-Improved chat experience
-v0.3.0
+The project is still under active development.
 
-PDF Retrieval Improvements
+Some GUI state transitions between study modes may require further refinement.
 
-Added document retrieval for PDF chat
-Retrieved relevant PDF sections before answering questions
-Improved answer grounding in document content
-Improved PDF question answering accuracy
-v0.4.0
+The application is currently primarily designed for desktop environments.
 
-Semantic Retrieval & Improved AI Context
+Future Improvements
 
-Added semantic embeddings using nomic-embed-text
-Added cosine similarity for semantic comparison
-Added Hybrid Semantic + Keyword Retrieval
-Improved document chunking
-Added context-aware retrieval queries
-Improved follow-up question understanding
-Improved chat response context
-Improved terminal chat workflow
-Added local embedding-based document search
-🔮 Future Improvements
+Potential future improvements include:
 
-Planned improvements include:
+Better GUI state management
+More responsive layouts
+Improved retrieval evaluation
+Persistent document indexing
+Better conversation memory
+More advanced quiz generation
+Adaptive quizzes based on previous performance
+Spaced-repetition flashcards
+Study progress tracking
+Document search
+Support for additional AI models
+Packaging the application as a standalone executable
 
-Better Quiz generation
-Better Flashcard generation
-Quiz difficulty levels
-Interactive quiz mode
-Search inside PDFs
-Multi-PDF support
-Persistent chat history
-Improved AI response quality
-Automated testing
-Better error handling
-Cross-platform packaging
-Improved UI/UX
-PDF embedding cache
-Faster document retrieval
+Development Log
 
-🗺️ Roadmap
-[v0.1.0] ──► [v0.2.0] ──► [v0.3.0] ──► [v0.4.0] ──► [v0.5.0] ──► [v1.0.0]
+Development decisions, experiments, technical problems, and implemented features are documented in:
 
-   │              │              │              │              │              │
-   │              │              │              │              │              └─ Stable Release
-   │              │              │              │              └─ Advanced Study Features
-   │              │              │              └─ Semantic Retrieval
-   │              │              └─ PDF Retrieval
-   │              └─ Context-aware Chat + GUI
-   └─ Initial Application
+DEVLOG.md
 
-👨‍💻 Author
+The development log contains the evolution of the project from its initial PDF processing functionality to the current AI-powered study assistant.
+
+
+Author
 
 Faraz Sadeghi
 
 Computer Engineering Student
 
-GitHub:
-
-https://github.com/FarazSadeghi323
+University of Tehran
 
 
-📄 License
+License
 
-This project is licensed under the MIT License.
-
-🎓 Project Goal
-
-This project was created to improve practical skills in:
-
-Python development
-Software engineering
-AI application development
-Desktop application development
-Retrieval systems
-Semantic search
-Large Language Models
-Local AI models
-Git and GitHub
-
-The long-term goal is to turn the project into a more capable AI study platform for university students.
-
-The project is being developed publicly as part of a practical learning journey.
+This project is currently intended as a personal educational and portfolio project.

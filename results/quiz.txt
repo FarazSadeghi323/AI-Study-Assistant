@@ -1,54 +1,54 @@
 QUESTION 1:
-Which of the following best describes the primary components included within the Digital Transformation (DT) Maturity Assessment Framework?
+What is the primary target audience for the Digital Transformation Maturity Assessment Framework?
 
-A) Strategic planning, risk assessment, and market analysis.
-B) Building Information Modelling (BIM), digital engineering (DE), and critical information management.
-C) Financial forecasting, cost reduction strategies, and operational efficiency.
-D) Customer relationship management, sales automation, and marketing campaigns.
+A) Small private businesses
+B) Large government-owned corporations (GOCs)
+C) Individual asset managers
+D) Technology consulting firms
 
 ANSWER: B
-EXPLANATION: The text explicitly states that the framework incorporates BIM, DE, and critical information management.
+EXPLANATION: The text states that the framework “targets large infrastructure asset owners, specifically focusing on large government-owned corporations (GOCs).”
 
 QUESTION 2:
-The Digital Transformation (DT) Maturity Assessment Framework utilizes a specific method for ranking its indicators. What is that method?
+Which of the following technologies is explicitly included within the Digital Transformation Maturity Assessment Framework?
 
-A) Monte Carlo Simulation
-B) The analytical hierarchy process (AHP)
-C) Regression Analysis
-D) SWOT Analysis
+A) Cloud Computing
+B) Building Information Modelling (BIM)
+C) Artificial Intelligence
+D) Blockchain Technology
 
 ANSWER: B
-EXPLANATION: The text clearly states that the framework uses the "analytical hierarchy process (AHP) for ranking."
+EXPLANATION: The text clearly states that the framework incorporates “Building Information Modelling (BIM), digital engineering (DE), and critical information management.”
 
 QUESTION 3:
-According to the source text, the Digital Transformation (DT) Maturity Assessment Framework is designed to evaluate which of the following areas?
+How does the assessment tool evaluate Digital Twin (DT) maturity?
 
-A) Human resource management, employee training, and leadership development.
-B) Asset management, asset delivery, and asset performance.
-C) Supply chain logistics, inventory control, and transportation optimization.
-D) Product development, innovation, and research & development.
-
-ANSWER: B
-EXPLANATION: The text indicates that the framework “relates to asset management, asset delivery, and asset performance.”
-
-QUESTION 4:
-What is the primary function of the Digital Transformation (DT) Maturity Assessment Framework tool?
-
-A) To provide long-term strategic forecasts for the organization.
-B) To facilitate data input and evaluation in order to determine DT status and establish improvement targets.
-C) To automate the asset management process and streamline operations.
-D) To generate detailed reports on market trends and competitor analysis.
-
-ANSWER: B
-EXPLANATION: The text states that "The tool facilitates data input and evaluation to determine DT status and establish improvement targets."
-
-QUESTION 5:
-The Digital Transformation (DT) Maturity Assessment Framework was developed for which type of organization?
-
-A) Small and medium-sized enterprises (SMEs)
-B) Non-profit organizations
-C) Large government-owned corporations (GOCs)
-D) Multinational corporations
+A) Through subjective interviews with key stakeholders.
+B) Using a weighted scoring system based on cost reduction.
+C) Utilizing the analytical hierarchy process (AHP) across 56 indicators.
+D) Primarily relying on expert opinions from technology vendors.
 
 ANSWER: C
-EXPLANATION: The text explicitly states that the framework was developed “for large government-owned corporations (GOCs).”
+EXPLANATION: The text specifies that “the assessment tool evaluates Digital Twin (DT) maturity across 56 indicators using the analytical hierarchy process (AHP).”
+
+QUESTION 4:
+What is the primary goal of the Digital Transformation Maturity Assessment Framework?
+
+A) To reduce IT infrastructure costs for organizations.
+B) To enhance asset management, delivery, and overall performance.
+C) To automate the creation of Digital Twins.
+D) To replace traditional building design processes.
+
+ANSWER: B
+EXPLANATION: The text states that “the framework aims to enhance asset management, delivery, and overall performance.”
+
+QUESTION 5:
+The research behind this framework was conducted by:
+
+A) Only a single research institute.
+B) A small team of independent consultants.
+C) Multiple universities and institutes.
+D) Primarily government agencies.
+
+ANSWER: C
+EXPLANATION: The text indicates that “the research involved multiple universities and institutes.”
