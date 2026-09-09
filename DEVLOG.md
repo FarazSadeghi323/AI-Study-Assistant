@@ -742,3 +742,81 @@ This allows the system to retrieve relevant information even when the user's que
 ### Result
 
 The PDF chat system now supports more intelligent semantic search, improved document retrieval, and better follow-up question understanding.
+
+## Version 0.5.0 - Smart Study Tools GUI
+
+### Added
+
+- Added interactive quiz parsing with `quiz_parser.py`.
+- Added interactive flashcard parsing with `flashcard_parser.py`.
+- Added a complete GUI-based quiz experience.
+- Added a complete GUI-based flashcard review experience.
+- Added quiz scoring and percentage calculation.
+- Added quiz explanations and answer feedback.
+- Added quiz restart functionality.
+- Added flashcard answer reveal and review-again functionality.
+- Added PDF selection and integrated study tools into the GUI.
+
+### Improved
+
+- Improved the GUI layout and user interaction flow.
+- Improved quiz generation by connecting generated AI output to the interactive quiz interface.
+- Improved flashcard generation by connecting generated AI output to the interactive flashcard interface.
+- Improved chat interaction with PDF documents.
+- Improved GUI responsiveness and window interaction.
+- Improved progress and status feedback during AI operations.
+- Improved output handling for summaries, quizzes, flashcards, and chat responses.
+
+### Study Tools
+
+The application now provides three interactive study modes:
+
+1. PDF Summary
+2. Interactive Quiz
+3. Study Flashcards
+4. Chat with Notes
+
+### Quiz Features
+
+- Configurable number of questions.
+- Difficulty selection.
+- Interactive multiple-choice questions.
+- Immediate answer feedback.
+- Question explanations.
+- Score calculation.
+- Accuracy percentage.
+- Quiz restart functionality.
+
+### Flashcard Features
+
+- Automatic flashcard generation from PDF documents.
+- Interactive card-by-card review.
+- Answer reveal functionality.
+- Progress tracking.
+- Review Again functionality.
+
+### GUI Architecture
+
+The GUI now integrates the main AI study features into a single desktop application:
+
+PDF Selection
+→ AI Processing
+→ Study Tool Selection
+→ Interactive Learning Experience
+
+### Current Status
+
+The AI Study Assistant has evolved from a basic PDF processing application into an interactive AI-powered study environment.
+
+The project currently supports:
+
+- PDF summarization
+- Retrieval-based PDF chat
+- Semantic document retrieval
+- AI-generated quizzes
+- Interactive quiz evaluation
+- AI-generated flashcards
+- Interactive flashcard review
+- Desktop GUI
+
+The next development phase will focus on improving the intelligence of the study tools, user experience, and overall application architecture.

@@ -1,6 +1,6 @@
-*   A maturity assessment framework was developed for digital transformation within large infrastructure asset owners and government-owned corporations.
-*   The framework employs the Analytic Hierarchy Process (AHP) alongside Building Information Modelling (BIM) and related technologies like Digital Engineering (DE), data science, IoT, and AI.
-*   It assesses digital transformation across the asset lifecycle, focusing on management, delivery, and performance improvements.
-*   An Excel-based tool incorporating 56 indicators, driven by expert input via AHP, facilitates maturity evaluation and target setting.
-*   Strategic alignment with organizational objectives is critical for maximizing the impact of digital transformation on efficiency, innovation, and safety. 
-*   Key elements integrated within the framework include BIM, data integration, value of information, and critical information management competencies.
+*   A Digital Transformation (DT) Maturity Assessment Framework was developed for large, government-owned corporations (GOCs), primarily Australian Government Organizations.
+*   The framework incorporates Building Information Modelling (BIM), digital engineering (DE), and critical information management.
+*   It assesses DT maturity across 56 indicators, utilizing the Analytical Hierarchy Process (AHP) for ranking based on expert opinion.
+*   The assessment tool facilitates data input and evaluation to determine DT status and identify areas for improvement.
+*   The research involved a multi-university collaborative project originating from Australia.
+*   The framework is relevant to asset management, asset delivery, and asset performance.

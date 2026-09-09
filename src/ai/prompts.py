@@ -43,20 +43,53 @@ Summaries:
 QUIZ_PROMPT = """
 You are an expert university teacher.
 
-Create 5 multiple-choice questions from the following text.
+Create {num_questions} multiple-choice questions from the source text.
+
+Difficulty: {difficulty}
 
 Rules:
-- Each question must have exactly four options (A, B, C, D).
-- Only one option should be correct.
-- Write the correct answer after each question.
-- Questions should test understanding, not memorization.
-- Do NOT include explanations.
+- Use ONLY information supported by the source text.
+- Each question must have exactly four options.
+- Options must be labeled A, B, C, D.
+- Only one option must be correct.
+- Questions should test understanding and reasoning, not simple memorization.
+- The difficulty must match the requested level.
+- Include a short explanation for why the correct answer is correct.
+- Do NOT add introductions.
+- Do NOT add conclusions.
+- Do NOT ask follow-up questions.
 
-Text:
+IMPORTANT:
+Return the result in EXACTLY this format:
+
+QUESTION 1:
+<question>
+
+A) <option>
+B) <option>
+C) <option>
+D) <option>
+
+ANSWER: <A/B/C/D>
+EXPLANATION: <short explanation>
+
+QUESTION 2:
+<question>
+
+A) <option>
+B) <option>
+C) <option>
+D) <option>
+
+ANSWER: <A/B/C/D>
+EXPLANATION: <short explanation>
+
+Continue the same format for all questions.
+
+SOURCE TEXT:
 
 {text}
 """
-
 
 def flashcard_prompt(text):
     return f"""

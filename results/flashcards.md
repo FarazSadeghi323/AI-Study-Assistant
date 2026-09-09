@@ -1,28 +1,31 @@
 # AI Study Assistant - Flashcards
 
-Q: What was developed for digital transformation?
-A: A maturity assessment framework
+Q: Who developed the DT Maturity Assessment Framework?
+A: Large, government-owned corporations (GOCs)
 
-Q: Which process is used alongside BIM?
-A: Analytic Hierarchy Process (AHP)
+Q: In what country was the framework primarily developed?
+A: Australia
 
-Q: Name three technologies integrated into the framework.
-A: BIM, DE, IoT
+Q: What technologies are integrated into the framework?
+A: BIM, DE, and CIM
 
-Q: How many indicators does the Excel tool utilize?
+Q: How many indicators does the framework assess?
 A: 56
 
-Q: What are the primary focuses of assessing digital transformation?
-A: Management, delivery, performance
+Q: What process is used for ranking the indicators?
+A: Analytical Hierarchy Process (AHP)
 
-Q: What is crucial for maximizing digital transformation's impact?
-A: Strategic alignment with objectives
+Q: What are the three areas the framework encompasses?
+A: Asset management, asset delivery, and asset performance
 
-Q: Name one key element integrated within the framework.
-A: Data integration
+Q: What does the tool support?
+A: Data input and evaluation
 
-Q: What is a focus of the framework’s evaluation?
-A: Value of information
+Q: Who conducted the research?
+A: Academics at multiple universities
 
-Q: What competencies are key elements integrated within the framework?
-A: Critical information management
+Q: What is the primary goal of the framework?
+A: Determine current DT status and identify areas for improvement
+
+Q: What is the overall purpose of the framework?
+A: DT Maturity Assessment

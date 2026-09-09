@@ -142,9 +142,18 @@ def summarize_pdf(pdf_path):
         return f"Error:\n\n{error}"
 
 
-def quiz_pdf(pdf_path):
+def quiz_pdf(
+    pdf_path,
+    num_questions: int = 5,
+    difficulty: str = "medium",
+):
     """
-    Generate a quiz from the final AI summary.
+    Generate a smart quiz from the final AI summary.
+
+    Args:
+        pdf_path: Path to the PDF file.
+        num_questions: Number of questions to generate.
+        difficulty: Quiz difficulty level.
     """
 
     try:
@@ -159,13 +168,22 @@ def quiz_pdf(pdf_path):
 
         final_summary = data["final_summary"]
 
-        print("\nGenerating quiz...\n")
+        print("\nGenerating smart quiz...\n")
 
-        quiz = generate_quiz(final_summary)
+        quiz = generate_quiz(
+            final_summary,
+            num_questions=num_questions,
+            difficulty=difficulty,
+        )
 
         print("\n" + "=" * 50)
-        print("QUIZ")
+        print("SMART QUIZ")
         print("=" * 50)
+
+        print(f"\nQuestions: {num_questions}")
+        print(f"Difficulty: {difficulty.title()}")
+
+        print("\n" + "-" * 50 + "\n")
 
         print(quiz)
 
@@ -176,30 +194,18 @@ def quiz_pdf(pdf_path):
 
         markdown_file = save_markdown(
             "quiz.md",
-            "AI Study Assistant - Quiz",
+            "AI Study Assistant - Smart Quiz",
             quiz,
         )
 
         print(f"\n✅ Quiz saved to: {quiz_file}")
         print(f"✅ Markdown saved to: {markdown_file}")
 
-        info = get_pdf_information(pdf_path)
+        return quiz
 
-        return f"""
-        PDF Information
 
-        File Name : {info['file_name']}
-        Pages     : {info['page_count']}
-        Author    : {info['author']}
-        Title     : {info['title']}
-        Size      : {info['file_size']} MB
-
-        ==================================================
-
-        QUIZ
-
-        {quiz}
-        """
+    except Exception as error:
+        print(f"\n❌ Error while generating quiz: {error}")
 
     except Exception as error:
 
@@ -208,7 +214,7 @@ def quiz_pdf(pdf_path):
         print(error)
         print("=" * 50)
         return f"Error:\n\n{error}"
-        
+
 
 
 def flashcards_pdf(pdf_path):
@@ -270,7 +276,7 @@ def flashcards_pdf(pdf_path):
 
         {flashcards}
         """
-        
+
     except Exception as error:
 
         print("\n" + "=" * 50)
@@ -379,11 +385,38 @@ def main():
 
         elif choice == "2":
 
-            quiz_pdf()
+            pdf_path = select_pdf()
+
+            if not pdf_path:
+                print("\nNo PDF selected.")
+                continue
+
+            print("\nQuiz Settings")
+            print("-" * 30)
+
+            num_questions = int(
+                input("Number of questions (5/10/15): ")
+            )
+
+            difficulty = input(
+                "Difficulty (easy/medium/hard): "
+            ).strip().lower()
+
+            quiz_pdf(
+                pdf_path,
+                num_questions=num_questions,
+                difficulty=difficulty,
+            )
 
         elif choice == "3":
 
-            flashcards_pdf()
+            pdf_path = select_pdf()
+
+            if not pdf_path:
+                print("\nNo PDF selected.")
+                continue
+
+            flashcards_pdf(pdf_path)
 
         elif choice == "4":
 
